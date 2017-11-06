@@ -1,0 +1,32 @@
+
+# Site settings
+
+title: Complete Bride
+email: D@veColquhoun.net
+description: > 
+  trial for booking system
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://localhost:4000" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: aeonach
+github_username:  aeonach
+
+# Build settings
+sass:
+  sass_dir: _sass
+include: ['_pages']
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
