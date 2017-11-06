@@ -6,7 +6,7 @@ email: D@veColquhoun.net
 description: > 
   trial for booking system
 baseurl: "/completebride" # the subpath of your site, e.g. /blog
-url: "https://aeonach.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://aeonach.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: aeonach
 github_username:  aeonach
 
