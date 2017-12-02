@@ -7,3 +7,9 @@ Created:December 2014
 License URI:http://support.wrapbootstrap.com/
 File Description: Place here your custom CSS styles
 */
+
+#logo_img {
+  display: block;
+  max-width: 150px;
+  height: auto;
+}
