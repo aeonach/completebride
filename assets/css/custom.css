@@ -8,7 +8,7 @@ License URI:http://support.wrapbootstrap.com/
 File Description: Place here your custom CSS styles
 */
 
-#logo_img {
+#logo_img, #logo-img-mobile {
   display: block;
   max-width: 150px;
   height: auto;
