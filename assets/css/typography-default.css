@@ -26,8 +26,9 @@ textarea {
 }
 
 .logo-font {
-  font-family: "Rouge Script", cursive, sans-serif;
-    font-size: 35px;
+  font-family: "ByronRR-Medium", cursive, sans-serif;
+    font-size: 55px;
+    line-height: normal;
 }
 
 /*Typography
@@ -148,6 +149,10 @@ h2.logo-font {
 
 h3 {
   font-size: 24px;
+}
+
+h3.logo-font {
+    font-size: 35px;
 }
 
 h4 {

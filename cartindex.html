@@ -1,0 +1,337 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery Cesta-Feira: Shopping Cart Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+
+    <style type="text/css">
+
+        /*!
+         * Start Bootstrap - Heroic Features (https://startbootstrap.com/template-overviews/heroic-features)
+         * Copyright 2013-2017 Start Bootstrap
+         * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-heroic-features/blob/master/LICENSE)
+         */
+
+        body {
+            padding-top: 54px;
+        }
+
+        @media (min-width: 992px) {
+            body {
+                padding-top: 56px;
+            }
+        }
+
+        .card {
+            height: 100%;
+        }
+
+        .cart-item-count {
+            position: relative;
+        }
+
+        .cesta-feira__num-items{
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #fff;
+            color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: -2px;
+            right: -12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* table styling */
+        .table
+        {
+	display:table;
+	border-collapse:separate;
+	border-spacing:2px;
+}
+.thead
+{
+	display:table-header-group;
+	color:white;
+	font-weight:bold;
+	background-color:grey;
+}
+.tbody
+{
+	display:table-row-group;
+}
+.tr
+{
+	display:table-row;
+}
+.td
+{
+	display:table-cell;
+	padding:1px;
+}
+.tr.editing .td INPUT
+{
+	width:50px;
+}
+.quantity
+        {width: 50px;}
+    </style>
+
+</head>
+
+<body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="javascript:;">Complete Bride</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="cartindex.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            
+                            <a class="nav-link cart-item-count" href="cart.html" data-cesta-feira-items-count><span class="fa fa-shopping-cart"></span> Shopping Cart</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Content -->
+<div class="container">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-5">
+        <h1 class="display-3">Complete Bride: Shopping Cart Example</h1>
+        
+    </header>
+
+    <div class="basket-items table">
+            <div class="tbody">
+              
+                <fieldset class="">
+                <Legend>The Bride:</Legend>
+                
+                <div class="tr">
+                    <div class="td col-4">Hair</div>
+                    <div class="td col-4">£33.00</div>
+                
+                    <form action="" class="form" data-cesta-feira-form>
+                        <div class="form-group td">
+                            <input type="number" min="1" value="0" class="form-control quantity" name="quantity" data-cesta-feira-attribute placeholder="Quantity">
+                        </div>
+                        <div class="form-group td">
+                            <input type="hidden" class="form-control" name="observations" data-cesta-feira-attribute placeholder="Observations">
+                        </div>
+                        <input type="hidden" value="Bride's Hair" name="product_name" data-cesta-feira-attribute="">
+                        <input type="hidden" value="33.00" name="unity_price" data-cesta-feira-attribute>
+                        <input type="hidden" value="1" data-cesta-feira-item-id />
+                        <input type="hidden" value="shoe" name="item_type" data-cesta-feira-attribute>
+                        <div class="td"><input type="submit" class="btn btn-primary" value="Add to Cart"/></div>
+                    </form>
+                </div>
+                
+                <div class="card-body tr">
+                    <div class="table-description td col-4">Makeup</div>
+                    <div class="table-amount td col-4">£33.00</div>
+                
+                    <form action="" class="form" data-cesta-feira-form>
+                        <div class="form-group td">
+                            <input type="number" min="1" value="0" class="form-control quantity" name="quantity" data-cesta-feira-attribute placeholder="Quantity">
+                        </div>
+                        <div class="form-group td">
+                            <input type="hidden" class="form-control" name="observations" data-cesta-feira-attribute placeholder="Observations">
+                        </div>
+                        <input type="hidden" value="Bride's Makeup" name="product_name" data-cesta-feira-attribute="">
+                        <input type="hidden" value="33.00" name="unity_price" data-cesta-feira-attribute>
+                        <input type="hidden" value="2" data-cesta-feira-item-id />
+                        <input type="hidden" value="shoe" name="item_type" data-cesta-feira-attribute>
+                        <div class="td"><input type="submit" class="btn btn-primary" value="Add to Cart"/></div>
+                    </form>
+                </div>
+                     
+                <div class="card-body tr">
+                    <div class="table-description td col-4">Hair &amp; Makeup</div>
+                    <div class="table-amount td col-4">£55.00</div>
+                
+                    <form action="" class="form" data-cesta-feira-form>
+                        <div class="form-group td">
+                            <input type="number" min="1" value="0" class="form-control quantity" name="quantity" data-cesta-feira-attribute placeholder="Quantity">
+                        </div>
+                        <div class="form-group td">
+                            <input type="hidden" class="form-control" name="observations" data-cesta-feira-attribute placeholder="Observations">
+                        </div>
+                        <input type="hidden" value="Bridesmaid's Hair" name="product_name" data-cesta-feira-attribute="">
+                        <input type="hidden" value="55.00" name="unity_price" data-cesta-feira-attribute>
+                        <input type="hidden" value="3" data-cesta-feira-item-id />
+                        <input type="hidden" value="shoe" name="item_type" data-cesta-feira-attribute>
+                        <div class="td"><input type="submit" class="btn btn-primary" value="Add to Cart"/></div>
+                    </form>
+                </div>
+               </fieldset>
+                
+                
+                <fieldset class="">
+                
+                    <legend>Bridesmads and guests</legend>
+                
+                <div class="card-body tr">
+                    <div class="table-description td col-4">Hair</div>
+                    <div class="table-amount td col-4">£28.00</div>
+                
+                    <form action="" class="form" data-cesta-feira-form>
+                        <div class="form-group td">
+                            <input type="number" min="1" value="0" class="form-control quantity" name="quantity" data-cesta-feira-attribute placeholder="Quantity">
+                        </div>
+                        <div class="form-group td">
+                            <input type="hidden" class="form-control" name="observations" data-cesta-feira-attribute placeholder="Observations">
+                        </div>
+                        <input type="hidden" value="Bridesmaid's Makeup" name="product_name" data-cesta-feira-attribute="">
+                        <input type="hidden" value="28.00" name="unity_price" data-cesta-feira-attribute>
+                        <input type="hidden" value="4" data-cesta-feira-item-id />
+                        <input type="hidden" value="shoe" name="item_type" data-cesta-feira-attribute>
+                        <div class="td"><input type="submit" class="btn btn-primary" value="Add to Cart"/></div>
+                    </form>
+                </div>
+                
+                <div class="card-body tr">
+                    <div class="table-description td col-4">Makeup</div>
+                    <div class="table-amount td col-4">£28.00</div>
+                
+                    <form action="" class="form" data-cesta-feira-form>
+                        <div class="form-group td">
+                            <input type="number" min="1" value="0" class="form-control quantity" name="quantity" data-cesta-feira-attribute placeholder="Quantity">
+                        </div>
+                        <div class="form-group td">
+                            <input type="hidden" class="form-control" name="observations" data-cesta-feira-attribute placeholder="Observations">
+                        </div>
+                        <input type="hidden" value="Guest's Hair" name="product_name" data-cesta-feira-attribute="">
+                        <input type="hidden" value="28.00" name="unity_price" data-cesta-feira-attribute>
+                        <input type="hidden" value="6" data-cesta-feira-item-id />
+                        <input type="hidden" value="shoe" name="item_type" data-cesta-feira-attribute>
+                        <div class="td"><input type="submit" class="btn btn-primary" value="Add to Cart"/></div>
+                    </form>
+                </div>
+                
+                <div class="card-body tr">
+                    <div class="table-description td col-4">Hair &amp; Makeup</div>
+                    <div class="table-amount td col-4">£50.00</div>
+                
+                    <form action="" class="form" data-cesta-feira-form>
+                        <div class="form-group td">
+                            <input type="number" min="1" value="0" class="form-control quantity" name="quantity" data-cesta-feira-attribute placeholder="Quantity">
+                        </div>
+                        <div class="form-group td">
+                            <input type="hidden" class="form-control" name="observations" data-cesta-feira-attribute placeholder="Observations">
+                        </div>
+                        <input type="hidden" value="Guest's Makeup" name="product_name" data-cesta-feira-attribute="">
+                        <input type="hidden" value="50.00" name="unity_price" data-cesta-feira-attribute>
+                        <input type="hidden" value="7" data-cesta-feira-item-id />
+                        <input type="hidden" value="shoe" name="item_type" data-cesta-feira-attribute>
+                        <div class="td"><input type="submit" class="btn btn-primary" value="Add to Cart"/></div>
+                    </form>
+                </div>
+                
+                </fieldset>
+                
+                <fieldset class="">
+                
+                    <legend>Children</legend>
+                
+                <div class="card-body tr">
+                    <div class="table-description td col-4">Hair</div>
+                    <div class="table-amount td col-4">£18.00</div>
+                
+                    <form action="" class="form" data-cesta-feira-form>
+                        <div class="form-group td">
+                            <input type="number" min="1" value="0" class="form-control quantity" name="quantity" data-cesta-feira-attribute placeholder="Quantity">
+                        </div>
+                        <div class="form-group td">
+                            <input type="hidden" class="form-control" name="observations" data-cesta-feira-attribute placeholder="Observations">
+                        </div>
+                        <input type="hidden" value="Child's Hair" name="product_name" data-cesta-feira-attribute="">
+                        <input type="hidden" value="18.00" name="unity_price" data-cesta-feira-attribute>
+                        <input type="hidden" value="8" data-cesta-feira-item-id />
+                        <input type="hidden" value="shoe" name="item_type" data-cesta-feira-attribute>
+                        <div class="td"><input type="submit" class="btn btn-primary" value="Add to Cart"/></div>
+                    </form>
+                </div>
+                
+                <div class="card-body tr">
+                    <div class="table-description td col-4">Makeup</div>
+                    <div class="table-amount td col-4">£18.00</div>
+                
+                    <form action="" class="form" data-cesta-feira-form>
+                        <div class="form-group td">
+                            <input type="number" min="1" value="0" class="form-control quantity" name="quantity" data-cesta-feira-attribute placeholder="Quantity">
+                        </div>
+                        <div class="form-group td">
+                            <input type="hidden" class="form-control" name="observations" data-cesta-feira-attribute placeholder="Observations">
+                        </div>
+                        <input type="hidden" value="Child's Makeup" name="product_name" data-cesta-feira-attribute="">
+                        <input type="hidden" value="18.00" name="unity_price" data-cesta-feira-attribute>
+                        <input type="hidden" value="9" data-cesta-feira-item-id />
+                        <input type="hidden" value="shoe" name="item_type" data-cesta-feira-attribute>
+                        <div class="td"><input type="submit" class="btn btn-primary" value="Add to Cart"/></div>
+                    </form>
+                </div>
+                </fieldset>
+        
+            </div>
+        </div>
+    
+    </div> 
+    
+    <!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Complete Bride</p>
+    </div>
+    <!-- /.container -->
+</footer>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jStorage/0.4.12/jstorage.min.js"></script>
+<script src="../src/cesta-feira.js"></script>
+<script type="application/javascript">
+  $( document ).ready(function() {
+    $.CestaFeira({
+      debug: false,
+      onItemAdded: function (item) {
+        console.log(item);
+      },
+      onItemUpdated: function (item) {
+        console.log(item);
+      }
+    });
+  });
+</script><!--
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script> -->
+
+    
+    </body>
+
+</html>

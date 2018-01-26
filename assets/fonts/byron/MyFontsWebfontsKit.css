@@ -1,0 +1,28 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3514874, 2018-01-24T02:19:08-0500
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: ByronRR-Medium by Red Rooster Collection
+ * URL: https://www.myfonts.com/fonts/redrooster/byron-rr/medium-regular/
+ * Copyright: Copyright (c) 2014 by International TypeFounders, Inc. All rights reserved.
+ * Licensed pageviews: 10,000
+ * 
+ * 
+ * License: https://www.myfonts.com/viewlicense?type=web&buildid=3514874
+ * 
+ * © 2018 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("/count/35a1fa");
+
+  
+@font-face {font-family: 'ByronRR-Medium';src: url('webfonts/35A1FA_0_0.eot');src: url('webfonts/35A1FA_0_0.eot?#iefix') format('embedded-opentype'),url('webfonts/35A1FA_0_0.woff2') format('woff2'),url('webfonts/35A1FA_0_0.woff') format('woff'),url('webfonts/35A1FA_0_0.ttf') format('truetype');}
+ 
