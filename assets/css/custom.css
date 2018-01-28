@@ -23,7 +23,7 @@ File Description: Place here your custom CSS styles
 
 .parallaxcss { 
     /* The image used */
-    background-image: url("/assets/images/background-img-10.jpg");
+    background-image: url("/assets/images/testimonialbg.jpg");
 
     /* Set a specific height */
     position: relative;
