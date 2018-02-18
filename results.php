@@ -6,11 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Include Bootstrap CSS -->
-    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="../node_modules/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+ <style>
+     .json-result {
+         display: none; 
+     }
+    
+    
+    
+    </style>  
     
 </head>
 <body>
+
 <?php
 // Get the results as JSON string
 $product_list = filter_input(INPUT_POST, 'cart_list');
@@ -29,21 +37,28 @@ if($product_list_array) {
 } else {	
 	$result_html .= "<strong>Cart is Empty</strong>";
 }
+?>
+<?php
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=iso-8859-1';
+
+mail ('davecolquhoun@mac.com', 'New Booking', $result_html, $headers );
 ?>    
-    
     <br />
     <section class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         Cart Products
                     </div>
                     <div class="panel-body">
+                        <div class="json-result">
                         Full JSON Result<hr />
                         <code>
                             <?= isset($product_list) ? $product_list : '' ?>
                         </code>
+                            </div>
                         <br /><br />
                         Product List<hr />
                         <?= isset($result_html) ? $result_html : '' ?>
