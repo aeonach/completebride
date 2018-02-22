@@ -13,7 +13,7 @@
            <div class="col-md-8">
               <div class="pv-30 ph-20 white-bg feature-box bordered text-center">
             
-                  <!-- BEGIN  BRIDE -->
+                    <!-- BEGIN  BRIDE -->
                   
                   <section class="for-one">
                   <h3>The Bride or main guest</h3>
@@ -39,16 +39,17 @@
                                              </div>
                                          </div>     
                                          <div class="row grid-space-10"></div>  
+                                   <form id="bride-hair-and-makeup" action="" method="get"> 
                                     <div class="row form-group col-md-12 col-sm-12">
-                                        <label class="contact-label col-6">Full name:</label><input class="col-6" type="text" class="sc-cart-contact" data-name="customer-name" name="customer_name" label="Full name:" placeholder="Full name" value="" required>
+                                        <label class="contact-label col-6">Full name:</label><input class="col-6" type="text" class="sc-cart-contact" data-name="customer-name" name="customer_name" label="Full name:" value="" required>
                                     </div>
                                     <div class="row form-group col-md-12 col-sm-12">
-                                        <label class="contact-label col-6">Email:</label><input class="col-6" type="email" class="sc-cart-contact" data-name="customer-email" placeholder="Email" value="" required>
+                                        <label class="contact-label col-6">Email:</label><input class="col-6" type="email" class="sc-cart-contact" data-name="customer_email" value="" required>
                                     </div>
                                     <div class="row form-group col-md-12 col-sm-12">
-                                        <label class="contact-label col-6">Telephone:</label><input class="col-6" type="tel" class="sc-cart-contact" data-name="customer-telephone" placeholder="Telephone" value="" required>
+                                        <label class="contact-label col-6">Telephone:</label><input class="col-6" type="tel" class="sc-cart-contact" data-name="customer-telephone" value="" required>
                                     </div>
-                                        
+                                       </form> 
                                             <input name="product_price" value="75.00" type="hidden" />
                                             <input name="product_id" value="2" type="hidden" />
                                        <div class="row">
@@ -56,10 +57,12 @@
                                       
                                       </div>
                                         <div class="col-md-4 form-group2 add-to-cart">
-                                            <button class="sc-add-to-cart btn btn-default center">Add to cart</button>
+                                            <button class="sc-add-to-cart btn btn-default center" type="submit" form="bride-hair-and-makeup">Add to cart</button>
                                         </div>
                                            </div>
-                                      </div> 
+                                       
+                                      </div>
+                                    
                                     </div>
                       
                       
@@ -86,7 +89,7 @@
                                         <label class="contact-label col-6">Full name:</label><input class="col-6" type="text" class="sc-cart-contact" data-name="customer-name" name="customer_name" label="Full name:" placeholder="Full name" value="" required>
                                     </div>
                                     <div class="row form-group col-md-12 col-sm-12">
-                                        <label class="contact-label col-6">Email:</label><input class="col-6" type="email" class="sc-cart-contact" data-name="customer-email" placeholder="Email" value="" required>
+                                        <label class="contact-label col-6">Email:</label><input class="col-6" type="email" class="sc-cart-contact" data-name="customer_email" placeholder="Email" value="" required>
                                     </div>
                                     <div class="row form-group col-md-12 col-sm-12">
                                         <label class="contact-label col-6">Telephone:</label><input class="col-6" type="tel" class="sc-cart-contact" data-name="customer-telephone" placeholder="Telephone" value="" required>
@@ -128,7 +131,7 @@
                                         <label class="contact-label col-6">Full name:</label><input class="col-6" type="text" class="sc-cart-contact" data-name="customer-name" name="customer_name" label="Full name:" placeholder="Full name" value="" required>
                                     </div>
                                     <div class="row form-group col-md-12 col-sm-12">
-                                        <label class="contact-label col-6">Email:</label><input class="col-6" type="email" class="sc-cart-contact" data-name="customer-email" placeholder="Email" value="" required>
+                                        <label class="contact-label col-6">Email:</label><input class="col-6" type="email" class="sc-cart-contact" data-name="customer_email" placeholder="Email" value="" required>
                                     </div>
                                     <div class="row form-group col-md-12 col-sm-12">
                                         <label class="contact-label col-6">Telephone:</label><input class="col-6" type="tel" class="sc-cart-contact" data-name="customer-telephone" placeholder="Telephone" value="" required>
@@ -152,8 +155,7 @@
                       
                         </section>    
                         
-                            <!-- END FOR ONE -->
-                            <!-- BEGIN GUESTS -->
+                    <!-- BEGIN GUESTS -->
                   
                   <section class="for-guests space-top">
                   <h3>Bridesmaids and other guests</h3>
@@ -233,16 +235,14 @@
                             
                            
                         </section>    
-                        
-                            <!-- END GUESTS -->
                   
-                            <!-- START CHILDREN -->
+                    <!-- START CHILDREN -->
                         <section class="for-children space-top">
                   <h3>Children under 12</h3>
                 <div class="separator clearfix"></div>
                         
                               
-                            <!-- HAIR & MAKE-UP -->
+                    <!-- HAIR & MAKE-UP -->
                             <div class="sc-product-item container"> 
                                     <div class="grid row">
                                         <div class="grid-name col-md-3 col-sm-12" data-name="product_name"><strong>Hair & Make-up</strong></div>
