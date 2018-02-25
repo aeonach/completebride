@@ -47,6 +47,7 @@ mail ('davecolquhoun@mac.com', 'New Booking', $result_html, $headers );
     <br />
     <section class="container">
         <div class="row">
+            
             <div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -60,11 +61,17 @@ mail ('davecolquhoun@mac.com', 'New Booking', $result_html, $headers );
                         </code>
                             </div>
                         <br /><br />
-                        Product List<hr />
+                        Booking List<hr />
                         <?= isset($result_html) ? $result_html : '' ?>
                     </div>
                 </div>
             </div>
+            
+            <div class="col-md-8">
+            <h1>Checkout</h1>
+            
+            </div>
+        
         </div>
     </section>    
 </body>

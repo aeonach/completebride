@@ -37,6 +37,12 @@
             // Initialize Smart Cart    	
             $('#smartcart').smartCart();
 		});
+         
+
+function submitform() {
+    $('#submit_handle').click();
+}
+
          //panels
      $(document).on('click', '.panel-heading span.clickable', function(e){
     var $this = $(this);
@@ -50,27 +56,10 @@
 		$this.find('i').removeClass('fa-arrow-up').addClass('fa-arrow-down');
 	}
     
-         // Check for primary orders in cart
-        $(document).on('click', '.add-on-bookings', function(){
-        
-        if (!('customer_email' in cart_list)) {
-            $(".add-on-bookings").attr("disabled","disabled");
-            alert("You must make an appointment for Bride/Main Guest first.");
-        }else 
-            $('.add-on-bookings').removeAttr('disabled');
-            });
-         $.validator.setDefaults({
-		submitHandler: function() {
-			alert("submitted!");
-		}
-	});
+    
 
     $().ready(function() {
 $("#bride-hair-and-makeup").validate();
     });
 });
     </script>
-<script>
-
-	
-</script>
