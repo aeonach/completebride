@@ -149,6 +149,11 @@ span.clickable {
     margin-left: 20px;
 }
 
+.panel-body.panel-collapsed {
+    display: none;
+}
+/*
 .panel-body {
     display: none;
 }
+*/
