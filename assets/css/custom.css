@@ -152,8 +152,29 @@ span.clickable {
 .panel-body.panel-collapsed {
     display: none;
 }
-/*
-.panel-body {
+.blank-separator {
+  width: 100%;
+  margin: 20px auto 15px;
+  position: relative;
+  height: 1px;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1, 1);
+}
+
+.col-container {
+  display: flex;
+  width: 100%;
+}
+.col {
+  flex: 1;
+  padding: 16px;
+    margin: 5px;
+}
+
+.footer p {
+    padding-bottom: 2px;
+}
+
+#groups {
     display: none;
 }
-*/

@@ -1,16 +1,20 @@
 <!-- section start -->
       <!-- ================ -->
       <!--<section class="pv-40 clearfix"> -->
-                                                    <span class="anchor" id="Services"></span>
-        <div id="wedding" class="container collapse">
+                                                                        <span class="anchor" id="Services"></span>
+
+<!--################### RE-INSERT "COLLAPSE" IN THE 'CLASS'##################-->
+        <div id="wedding" class="container"> 
  
-          <h1 class="title space-top logo-font text-center text-default">Wedding Section</h1>
+     
+            
+        <div class="row grid-space-10">
+           <div class="col col-md-8" id="brides"> <!--###### FOR SWAPPING #######-->
+               
+                    <h1 class="title space-top logo-font text-center text-default">Wedding Section</h1>
           <div class="separator"></div>
           <br>
            
-            
-        <div class="row grid-space-10">
-           <div class="col-md-8">
                
                             <!-- BEGIN  BRIDE -->
                
@@ -19,7 +23,7 @@
                   <section class="for-one">
                   <h3>The Bride or main guest</h3>
                       <p class="text-default">Please ensure thst you choose one appointment from this section.</p>
-                <div class="separator clearfix"></div>
+                                                                        <div class="separator clearfix"></div>
                         
                               
                             <!-- HAIR & MAKE-UP -->
@@ -40,7 +44,7 @@
                            <form id="bride-hair-and-makeup" action="" method="get"> 
                             <div class="row form-group col-md-12 col-sm-12">
                                 <input class="col-6" type="text" class="sc-cart-contact" placeholder="Full Name" data-name="customer-name" name="customer_name" value="" required />
-                                <input class="col-6" type="email" placeholder="Email" class="sc-cart-contact" data-name="customer_email" value="" required="required" />
+                                <input class="col-6" type="email" placeholder="Email" class="sc-cart-contact" data-name="customer_email" value="" required />
                             </div>
                             <div class="row form-group col-md-12 col-sm-12">
                                 <input class="col-6" type="tel" placeholder="Telephone no." class="sc-cart-contact" data-name="customer-telephone" value="" required />
@@ -50,16 +54,15 @@
                                 <input class="col-6" type="text" placeholder="Wedding Date" class="sc-cart-contact" data-name="wedding-date" value="" required />
                                 <input class="col-6" type="text" placeholder="Wedding Time" class="sc-cart-contact" data-name="wedding-time" value="" required />
                             </div>   
-                                
+                               </form> 
                                     <input name="product_price" value="75.00" type="hidden" />
                                     <input name="product_id" value="01" type="hidden" />
-                               </form>
                                <div class="row">
                                <div class="col-md-8">
 
                               </div>
                                 <div class="col-md-4 form-group2 add-to-cart">
-                                    <button class="sc-add-to-cart btn btn-default center" type="submit" onclick="submitform()" form="bride-hair-and-makeup">Add to cart</button>
+                                    <button class="sc-add-to-cart btn btn-default center" type="button" onclick="submitform()" form="bride-hair-and-makeup">Add to cart</button>
 
                                 </div>
                                    </div>
@@ -67,7 +70,7 @@
                               </div>
                         </div>
                       
-                                                        <div class="separator clearfix"></div>
+                                                                                <div class="separator clearfix"></div>
                                 
                             <!-- HAIR ONLY -->
                         <div class="panel sc-product-item container">
@@ -427,18 +430,226 @@
                   
             </div>
             
+            <!-- ####### FOR THE SWAPPED DIV ######## -->
+            
+             <div class="col-md-8" id="groups">
+               
+                 <h1 class="title space-top logo-font text-center text-default">Group Bookings</h1>
+          <div class="separator"></div>
+          <br>
+               
+                        
+                           <!-- NON BRIDE  -->
+               
+                <div class="pv-30 ph-20 white-bg feature-box bordered text-center">
+                                        
+                                        <!-- BEGIN GUESTS --> 
+                        <section class="for-guests space-top">
+                              <h3>Bridesmaids and other guests</h3>
+                                                                    <div class="separator clearfix"></div>
+
+
+                                        <!-- HAIR & MAKE-UP -->
+                                <div class="sc-product-item container"> 
+                                    <div class="grid row">
+                                        <div class="grid-name col-md-3 col-sm-12" data-name="product_name"><strong>Guest's Hair & Make-up</strong></div>
+                                        <div class="grid-description col-md-4 col-sm-12" data-name="product_desc">Hair and make-up. </div>
+                                        <div class="price col-md-2 col-sm-12">
+                                            <strong class="">£50.00</strong>
+                                            <input name="product_price" value="50.00" type="hidden" />
+                                            <input name="product_id" value="04" type="hidden" />
+                                        </div>
+                                        <div class="form-group2 add-to-cart col-md-3 col-sm-12">
+                                            <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1" type="number">
+                                            <button class="add-on-bookings sc-add-to-cart btn btn-default pull-right">Add to cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                                                      <hr class="booking-divider" />
+                                                                      <div class="clearfix"></div>
+
+
+                                        <!-- HAIR ONLY -->
+                                <div class="sc-product-item container"> 
+                                    <div class="grid row">
+                                        <div class="grid-name col-md-3 col-sm-12" data-name="product_name"><strong>Guest's Hair</strong></div>
+                                        <div class="grid-description col-md-4 col-sm-12" data-name="product_desc">Appointment for hair. </div>
+                                        <div class="price col-md-2 col-sm-12">
+                                            <strong class="">£28.00</strong>
+                                            <input name="product_price" value="28.00" type="hidden" />
+                                            <input name="product_id" value="05" type="hidden" />
+                                        </div> 
+                                        <div class="form-group2 add-to-cart col-md-3 col-sm-12">
+                                            <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1" type="number">
+                                            <button class="add-on-bookings sc-add-to-cart btn btn-default pull-right">Add to cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                                                        <hr class="booking-divider" />
+                                                                        <div class="clearfix"></div>
+
+                                        <!-- MAKE-UP ONLY -->
+                                <div class="sc-product-item container"> 
+                                                <div class="grid row">
+                                                    <div class="grid-name col-md-3 col-sm-12" data-name="product_name"><strong>Guest's Make-up</strong></div>
+                                                    <div class="grid-description col-md-4 col-sm-12" data-name="product_desc">Appointment for make-up. </div>
+                                                    <div class="price col-md-2 col-sm-12">
+                                                        <strong class="">£28.00</strong>
+                                                        <input name="product_price" value="28.00" type="hidden" />
+                                                        <input name="product_id" value="06" type="hidden" />
+                                                    </div>
+                                                    <div class="form-group2 add-to-cart col-md-3 col-sm-12">
+                                                        <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1" type="number">
+                                                        <button class="add-on-bookings sc-add-to-cart btn btn-default pull-right">Add to cart</button>
+                                                    </div>
+                                                </div>
+                                </div>
+
+                                                                        <hr class="booking-divider" />
+                                                                        <div class="clearfix"></div>
+
+
+
+
+                        </section>    
+
+                    
+                        
+
+                                        <!-- BEGIN EXTRAS -->
+                        <section class="for-extras space-top">
+                            <h3>Extras</h3>
+                
+                                                            <div class="separator clearfix"></div>
+                        
+                              
+                            <!-- LIPSTICK -->
+                            <div class="sc-product-item container"> 
+                                <div class="grid row">
+                                    <div class="grid-name col-md-3 col-sm-12" data-name="product_name"><strong>Lipstick</strong></div>
+                                    <div class="grid-description col-md-4 col-sm-12">A sample pot of your chosen colour with a retractable brush- to see you through your day.</div>
+                                    <div class="price col-md-2 col-sm-12">
+                                        <strong class="">£5.00</strong>
+                                        <input name="product_price" value="5.00" type="hidden" />
+                                        <input name="product_id" value="10" type="hidden" />
+                                    </div>
+                                    <div class="form-group2 add-to-cart col-md-3 col-sm-12">
+                                        <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1" type="number">
+                                        <button class="add-on-bookings sc-add-to-cart btn btn-default pull-right">Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                                                            <hr class="booking-divider" />
+                                                            <div class="clearfix"></div>
+                    
+                            <!-- LIPGLOSS -->
+                            <div class="sc-product-item container"> 
+                                <div class="grid row">
+                                    <div class="grid-name col-md-3 col-sm-12" data-name="product_name"><strong>Lipgloss</strong></div>
+                                    <div class="grid-description col-md-4 col-sm-12">Waterproof and conditioning HD lipgloss available in 6 pigmented shades with adjustable coverage.</div>
+                                    <div class="price col-md-2 col-sm-12">
+                                        <strong class="">£15.00</strong>
+                                        <input name="product_price" value="15.00" type="hidden" />
+                                        <input name="product_id" value="11" type="hidden" />
+                                    </div>
+                                    <div class="form-group2 add-to-cart col-md-3 col-sm-12">
+                                        <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1" type="number">
+                                        <button class="add-on-bookings sc-add-to-cart btn btn-default pull-right">Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                     
+                                                            <hr class="booking-divider" />
+                                                            <div class="clearfix"></div>
+                           
+                            <!-- COMPACT -->
+                            <div class="sc-product-item container"> 
+                                <div class="grid row">
+                                    <div class="grid-name col-md-3 col-sm-12" data-name="product_name"><strong>Compact</strong></div>
+                                    <div class="grid-description col-md-4 col-sm-12">HD finishing powder to keep your base shine-free and flawless troughout your night & day.</div>
+                                    <div class="price col-md-2 col-sm-12">
+                                        <strong class="">£20.00</strong>
+                                        <input name="product_price" value="20.00" type="hidden" />
+                                        <input name="product_id" value="12" type="hidden" />
+                                    </div>
+                                    <div class="form-group2 add-to-cart col-md-3 col-sm-12">
+                                        <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1" type="number">
+                                        <button class="add-on-bookings sc-add-to-cart btn btn-default pull-right">Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                
+                                                            <hr class="booking-divider" />
+                                                            <div class="clearfix"></div>
+                            
+                          <!-- HAIR EXTENSIONS -->
+                            <div class="sc-product-item container"> 
+                                    <div class="grid row">
+                                        <div class="grid-name col-md-3 col-sm-12" data-name="product_name"><strong>Hair extensions</strong></div>
+                                        <div class="grid-description col-md-4 col-sm-12" data-name="product_desc">Your own styled and fitted. </div>
+
+
+                                        <div class="price col-md-2 col-sm-12">
+                                            <strong class="">£10.00</strong>
+
+                                            <input name="product_price" value="10.00" type="hidden" />
+                                            <input name="product_id" value="13" type="hidden" />
+                                        </div> 
+                                        <div class="form-group2 add-to-cart col-md-3 col-sm-12">
+                                            <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1" type="number">
+                                            <button class="add-on-bookings sc-add-to-cart btn btn-default pull-right">Add to cart</button>
+                                        </div>
+                                </div>
+                              </div>
+
+                                                            <hr class="booking-divider" />
+                                                            <div class="clearfix"></div>
+
+                            <!-- LASHES -->
+                            <div class="sc-product-item container"> 
+                                <div class="grid row">
+                                    <div class="grid-name col-md-3 col-sm-12" data-name="product_name"><strong>Eyelashes</strong></div>
+                                    <div class="grid-description col-md-4 col-sm-12" data-name="product_desc">Lashes supplied and applied </div>
+                                    <div class="price col-md-2 col-sm-12">
+                                        <strong class="">£10.00</strong>
+                                        <input name="product_price" value="10.00" type="hidden" />
+                                        <input name="product_id" value="14" type="hidden" />
+                                    </div>
+                                    <div class="form-group2 add-to-cart col-md-3 col-sm-12">
+                                        <input class="sc-cart-item-qty" name="product_quantity" min="1" value="1" type="number">
+                                        <button class="add-on-bookings sc-add-to-cart btn btn-default pull-right">Add to cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                
+                            
+                                        
+                                                            <hr class="booking-divider" />
+                                                            <div class="clearfix"></div>
+                            
+                           
+            </section> 
+                
+                </div>
+                  
+            
+            
+            
                             <!-- CART -->
                 
-            <aside class="col-md-4 cart-checkout">
+          <aside class="col-md-4 cart-checkout">
                 
                 <!-- Cart submit form -->
-                <form action="results.php" method="POST"> 
+                <form action="results.php" method="POST">
                     <!-- SmartCart element -->
-                    <div id="smartcart"></div>
+                  <div id="smartcart"></div>
                 </form>
                 
             </aside>
-             
+            
             
             
             
@@ -446,5 +657,6 @@
 
 </div>
       <!-- section end -->
-            
-            
+<!--################### RE-INSERT "COLLAPSE" IN THE 'CLASS'##################-->
+
+ 

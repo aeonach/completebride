@@ -1,0 +1,195 @@
+<html>
+ <head>
+    
+    <style>
+
+
+wrapper {
+  width: 1280px;
+  height: 720px;
+}
+
+button.accordion {
+  background-color: #f6f6f6;
+  color: #a3a2a2;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 12px;
+  transition: 0.4s;
+  width: 270px;
+  padding-left: 50px;
+  font-family: roboto;
+  font-weight: bold;
+}
+
+button.accordion.active,
+button.accordion:hover {
+  background-color: #f0eeee;
+  color: #444444;
+}
+
+button.accordion:after {
+  content: '\002B';
+  color: #a3a2a2;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+  padding-right: 32px;
+}
+
+button.accordion.active:after {
+  content: "\2212";
+  color: #444444;
+}
+
+div.panel {
+  padding-left: 50px;
+  background-color: #f0eeee;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  width: 220px;
+  font-size: 10px;
+}
+
+p {
+  width: 170px;
+  padding-bottom: 20px;
+  font-family: roboto;
+  font-size: 10px;
+  font-weight: normal;
+  color: a3a2a2;
+}
+
+.my-logo {
+  height: 22px;
+  padding: 50px 0px 0px 50px;
+  float: left;
+}
+
+h1 {
+  font-family: roboto;
+  font-weight: bold;
+  font-size: 12px;
+  padding-left: 125px;
+  padding-top: 54px;
+}
+
+#accordion {
+  width: 270px;
+}
+
+#header {
+  background-color: #fbfbfb;
+  width: 270px;
+  padding-bottom: 50px;
+}
+
+#sidebar {
+  height: 720px;
+  width: 270px;
+  background-color: #fbfbfb;
+  position: relative;
+}
+
+
+button.accordion.active:after,
+button.accordion:hover:after {
+  color: #444444;
+  transition: .4s;
+}
+
+
+     </style>
+    
+    </head>  
+    <body>
+ <div class="pv-30 ph-20 white-bg feature-box bordered text-center">
+                    
+                  <section class="for-one">
+                  <h3>The Bride or main guest</h3>
+                      <p class="text-default">Please ensure thst you choose one appointment from this section.</p>
+                                                                        <div class="separator clearfix"></div>        
+        
+ <div id="sidebar">
+
+  
+
+
+  <div id="accordion">
+
+    <button class="accordion">Home</button>
+
+    <div class="panel">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <button class="accordion">About</button>
+    <div class="panel">
+      <p>My name is Warren. Thanks for taking the time to look at my portfolio. I have experimented with graphic design my entire life, and am finally taking it to the next level. I am looking forward to seeing how I can help innovate, leave a mark, and
+        challenge myself in every way possible.
+        <br>
+        <br> If you have any questions or feedback you’d like to share, just send me a email at warren_breedlove@yahoo.com.
+        <br>
+        <br> Thank you so much!</p>
+    </div>
+
+    <button class="accordion">Contact</button>
+
+    <div class="panel">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+
+    <button class="accordion">Resume</button>
+
+    <div class="panel">
+      <p>Click to view my resume.</p>
+    </div>
+     </div>
+     </div>
+     </section>
+                      </div>
+<script>
+var cur = null;
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].onclick = function() {
+    
+    // Only close already open panel
+    if (cur == this) {
+    	toggleItem(cur);
+      cur = null;
+      return;
+    }
+    
+    // Close current panel, and open this panel
+    if (cur) {
+      toggleItem(cur);
+    }
+    
+    toggleItem(this);
+    cur = this;
+  }
+}
+
+function toggleItem(item) {
+  item.classList.toggle("active");
+  var panel = item.nextElementSibling;
+  if (panel.style.maxHeight) {
+    panel.style.maxHeight = null;
+  } else {
+    panel.style.maxHeight = panel.scrollHeight + "px";
+  }
+}
+
+
+
+</script>
+   </body> 
+    </html>
