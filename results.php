@@ -35,18 +35,18 @@ mail ('davecolquhoun@mac.com', 'New Booking', $result_html, $headers );
         <div class="row">
             
             <div class="col-md-4">
-              <div class="pv-30 ph-20 white-bg feature-box bordered text-center">  
+              <div class="pv-30 ph-20 white-bg feature-box bordered">  
                 <div class="panel panel-default">
                     <div class="panel-heading">
                        <h1 class="title space-top logo-font text-center text-default">Your Booking</h1>
                     </div>
                     <div class="panel-body result-page">
-                        <div class="json-result">
+                     <!--   <div class="json-result">
                         Full JSON Result<hr />
                         <code>
                         {% raw %}    <?= isset($product_list) ? $product_list : '' ?> {% endraw %}
                         </code>
-                            </div>
+                            </div> -->
                         
                         <hr />
                         {% raw %}   <?= isset($result_html) ? $result_html : '' ?> {% endraw %}
@@ -78,7 +78,7 @@ mail ('davecolquhoun@mac.com', 'New Booking', $result_html, $headers );
                                         
                                         <input type="hidden" name="testMode" value="100">
 
-                                        <input type="hidden" name="instId" value="1154619">
+                                        <input type="hidden" name="instId" value="1154620">
                                         <input type="hidden" name="name" value="AUTHORISED">
                                         <input type="hidden" name="cartId" value="Deposit">
                                         <input type="hidden" name="amount" value="25.00">

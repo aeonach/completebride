@@ -4,17 +4,21 @@
                                                                         <span class="anchor" id="Services"></span>
 
 <!--################### RE-INSERT "COLLAPSE" IN THE 'CLASS'##################-->
-        <div id="wedding" class="container"> 
+        <div id="wedding" class="container collapse"> 
  
-     
+                   <p style="text-align:center; font-weight:bold; font-style:italic;">
+<a href="javascript:SwapDivsWithClick('swapper-first','swapper-other')">(Swap Divs)</a>
+</p>
+
             
         <div class="row grid-space-10">
-           <div class="col col-md-8" id="brides"> <!--###### FOR SWAPPING #######-->
+           <div class="col col-md-8" id="swapper-first"> <!--###### FOR SWAPPING #######-->
                
                     <h1 class="title space-top logo-font text-center text-default">Wedding Section</h1>
           <div class="separator"></div>
           <br>
            
+ 
                
                             <!-- BEGIN  BRIDE -->
                
@@ -28,20 +32,8 @@
                               
                             <!-- HAIR & MAKE-UP -->
                          <div class="panel sc-product-item container">
-                            <div class=" row"> 
-                                <div class="panel-heading pull-left col-md-12 col-sm-12" data-name="product_name"><strong>Bride Hair & Make-up</strong>
-                                    <span class="clickable"><i class="fa fa-arrow-down"></i></span>
-                                </div>
-                            </div>
-                                 <div class="panel-body panel-collapsed">
-                                <div class="row">
-                                <div class="grid-description col-md-6 col-sm-12" data-name="product_desc">Both hair and make-up for the bride.</div>
-                                <div class="price col-md-6 col-sm-12">
-                                    <strong class="">£75.00</strong>
-                                     </div>
-                                 </div>     
-                                 <div class="row grid-space-10"></div>  
-                           <form id="bride-hair-and-makeup" action="" method="get"> 
+                            <div class=" row">
+                                <form id="bride-hair-and-makeup" action="" method="get"> 
                             <div class="row form-group col-md-12 col-sm-12">
                                 <input class="col-6" type="text" class="sc-cart-contact" placeholder="Full Name" data-name="customer-name" name="customer_name" value="" required />
                                 <input class="col-6" type="email" placeholder="Email" class="sc-cart-contact" data-name="customer_email" value="" required />
@@ -55,6 +47,19 @@
                                 <input class="col-6" type="text" placeholder="Wedding Time" class="sc-cart-contact" data-name="wedding-time" value="" required />
                             </div>   
                                </form> 
+                                <div class="panel-heading pull-left col-md-12 col-sm-12" data-name="product_name"><strong>Bride Hair & Make-up</strong>
+                                    <span class="clickable"><i class="fa fa-arrow-down"></i></span>
+                                </div>
+                            </div>
+                                 <div class="panel-body panel-collapsed">
+                                <div class="row">
+                                <div class="grid-description col-md-6 col-sm-12" data-name="product_desc">Both hair and make-up for the bride.</div>
+                                <div class="price col-md-6 col-sm-12">
+                                    <strong class="">£75.00</strong>
+                                     </div>
+                                 </div>     
+                                 <div class="row grid-space-10"></div>  
+                           
                                     <input name="product_price" value="75.00" type="hidden" />
                                     <input name="product_id" value="01" type="hidden" />
                                <div class="row">
@@ -430,9 +435,24 @@
                   
             </div>
             
+             
+            
+                            <!-- CART -->
+                
+          <aside class="col-md-4 cart-checkout">
+                
+                <!-- Cart submit form -->
+                <form action="results.php" method="POST">
+                    <!-- SmartCart element -->
+                  <div id="smartcart"></div>
+                </form>
+                
+            </aside>
+            
+            
             <!-- ####### FOR THE SWAPPED DIV ######## -->
             
-             <div class="col-md-8" id="groups">
+             <div class="col-md-8" id="swapper-other">
                
                  <h1 class="title space-top logo-font text-center text-default">Group Bookings</h1>
           <div class="separator"></div>
@@ -445,7 +465,7 @@
                                         
                                         <!-- BEGIN GUESTS --> 
                         <section class="for-guests space-top">
-                              <h3>Bridesmaids and other guests</h3>
+                              <h3>Minimum of Three People</h3>
                                                                     <div class="separator clearfix"></div>
 
 
@@ -636,20 +656,7 @@
                 </div>
                   
             
-            
-            
-                            <!-- CART -->
-                
-          <aside class="col-md-4 cart-checkout">
-                
-                <!-- Cart submit form -->
-                <form action="results.php" method="POST">
-                    <!-- SmartCart element -->
-                  <div id="smartcart"></div>
-                </form>
-                
-            </aside>
-            
+           
             
             
             
@@ -658,5 +665,8 @@
 </div>
       <!-- section end -->
 <!--################### RE-INSERT "COLLAPSE" IN THE 'CLASS'##################-->
+        
+
+
 
  
