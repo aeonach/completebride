@@ -178,3 +178,7 @@ span.clickable {
 #groups {
     display: none;
 }
+
+button.add-on-bookings.sc-add-to-cart.btn.btn-default {
+    margin: 5px auto;
+}
