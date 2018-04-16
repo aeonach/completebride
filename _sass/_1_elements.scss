@@ -16,7 +16,9 @@ img {
 /* Lists
 ---------------------------------- */
 ul {
-  list-style: square;
+  list-style: outside square none;
+    margin-left: 0;
+    padding-left: 1em;
 }
 .list-icons,
 .list {
@@ -26,10 +28,12 @@ ul {
 .list-icons li,
 .list li {
   padding: 5px 0;
+    padding-left: 1em;
 }
 .list-icons li i {
   min-width: 25px;
   text-align: center;
+    padding-left: 1em;
 }
 .list-inline {
   margin-top: 9px;
