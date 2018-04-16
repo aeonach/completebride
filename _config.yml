@@ -5,8 +5,8 @@ title: Complete Bride
 email: D@veColquhoun.net
 description: > 
   trial for booking system
-baseurl: "/completebride" # the subpath of your site, e.g. /blog
-url: "http://davidcolquhoun.uk" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: /completebride # the subpath of your site, e.g. /blog
+url: http://davidcolquhoun.uk # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: aeonach
 github_username:  aeonach
 
