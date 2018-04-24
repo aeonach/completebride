@@ -7,114 +7,77 @@ permalink: payment.html
 
  {% include 02fbscript.html %}
 {% include 04header.html %}
- <div>
- <div id="wedding" class="container">
- 
-         <h1 class="title space-top logo-font text-center text-default">Wedding Section</h1>
-        
-          <br> 
-            
+<section class="main-container">
+    <div class="container clearfix">
+
+
+        <h3 class="title space-top text-center mt-4">Payment <strong>Page</strong></h3>
+        <div class="separator"></div>
+
         <div class="col-container row grid-space-10">
-           
+
+<!--PAYMENT BOX -->
             
-            
-            
-            
-               
-                          
-               
-                  
-          
-            
-                            <!-- CART -->
-                
-            <div class="col-md-6">
-                
-                <div class="col pv-30 ph-20 white-bg feature-box bordered text-center">
-                                            
-                                            
+            <div class="col col-md-6 pv-30 ph-20 white-bg feature-box bordered text-center">
+
                 <h3 class="">Availability confirmed?</h3>
-               <p class="text-default">By paying the small administration charge you will authorise us to confirm your bookings and allow us to assign you to the required specialists from our team.</p>                             
-                                       
-          <div id="deposit">  
-            <form action="https://secure.worldpay.com/wcc/purchase" method="post">
+                <p class="text-default">By paying the small administration charge you will authorise us to confirm your bookings and allow us to assign you to the required specialists from our team.</p>
+
+                <div id="deposit">
+                    
+                    <!-- CART --> 
+                    
+                    <form action="https://secure.worldpay.com/wcc/purchase" method="post">
+
+                        <input type="hidden" name="testMode" value="0">
+                        <input type="hidden" name="instId" value="1154620">
+                        <input type="hidden" name="cartId" value="Deposit">
+                        <input type="hidden" name="amount" value="25.00">
+                        <input type="hidden" name="currency" value="GBP">
                         
-                                        
-                                       <input type="hidden" name="testMode" value="0">
+                        <div class="form-group2 text-center">
+                            <div class="separator clearfix"></div>
+                            <input class="worldpay-button btn btn-default" type="submit" value="Pay Now">&nbsp; &nbsp;Payment:&nbsp;&pound;25.00
+                        </div>
 
-                                        <input type="hidden" name="instId" value="1154620">
-                                        
-                                        <input type="hidden" name="cartId" value="Deposit">
-                                        <input type="hidden" name="amount" value="25.00">
-                                        <input type="hidden" name="currency" value="GBP">
-                                    
-                                        
-                                        
-                                        <div class="form-group2 text-center">
-     <div class="separator clearfix"></div>  
-                                          <input class="worldpay-button btn btn-default" type="submit" value="Pay Now">&nbsp; &nbsp;Payment:&nbsp;&pound;25.00 
-                                        </div>
-                                        
-                               
-                                </form>
-                                      
-                                    
-                                              <table cellspacing="2" border="0" align="center">    
-                                   <tbody>
-                                       <tr>
-                                           <td>
-                                               <a href="http://www.mastercard.com" target="_blank"><img src="https://secure.worldpay.com/jsp/shopper/icons/WP_ECMC.gif" border="0" alt="Mastercard"></a>
-                                           </td>
-                                           <td>
-                                               <a href="http://www.jcbusa.com" target="_blank"><img src="https://secure.worldpay.com/jsp/shopper/icons/WP_JCB.gif" border="0" alt="JCB"></a>
-                                           </td>
-                                           <td>
-                                               <a href="http://www.maestrocard.com" target="_blank"><img src="https://secure.worldpay.com/jsp/shopper/icons/WP_MAESTRO.gif" border="0" alt="Maestro"></a>
-                                           </td>
-                                           <td>
-                                                <a href="http://www.visa.com" target="_blank"><img src="https://secure.worldpay.com/jsp/shopper/icons/WP_VISA_DELTA.gif" border="0" alt="Visa Debit"></a>  
-                                           </td>
-                                       </tr>
-                                        <tr>
-                                            <td colspan="5" align="center"><a href="http://www.worldpay.com/support/index.php?CMP=BA22713" target="_blank"><img src="https://secure.worldpay.com/jsp/shopper/icons/../pictures/poweredByWorldPay.gif" border="0" alt="Powered by WorldPay"></a></td>
-                                       </tr>
-                                    </tbody>
-                                </table>
-               <p>&nbsp;</p>
-                                        <p id=""><em>Please be aware that this is <strong>non-refundable</strong>. Your invoice is payable in cash, on the day. Remember that responsibility for the full payment rests with the person making the booking, so please ensure that all payments are collected before our arrival. </em></p>
-                                          <p><em>We can arrange for this by credit card, however, these arrangements must be made at least two weeks prior to your appointment and would not be eligible for a refund.</em></p>
-                                        </div> 
-             </div> 
-                
-        
+                    </form>
+                    <script language="JavaScript" src="https://secure.worldpay.com/wcc/logo?instId=1154620"></script>
+                    
+                    <!-- END CART -->
+                    
+                    <p>&nbsp;</p>
+                    <p id=""><em>Please be aware that this is <strong>non-refundable</strong>. Your invoice is payable in cash, on the day. Remember that responsibility for the full payment rests with the person making the booking, so please ensure that all payments are collected before our arrival. </em></p>
+                    <p><em>We can arrange for this by credit card, however, these arrangements should be made at least two weeks prior to your appointment and would then not be eligible for a refund.</em></p>
+                    <p>Download our full terms and conditions <a href="terms.pdf">here.</a></p>
 
-                    </div>
+                </div>
+            </div>
 
-        <div class="col-md-6">
-                
-            <div class=" col pv-30 ph-20 white-bg feature-box bordered">
-                                            
-                 <div class="titles text-center">                           
+<!--END PAYMENT BOX -->
+
+
+<!--INFO BOX -->
+
+            <div class=" col col-md-6 pv-30 ph-20 white-bg feature-box bordered">
+
+                <div class="titles text-center">
                     <h3 class="">What now?</h3>
                 </div>
-    <div class="separator clearfix"></div>
-               <ul class="list-icons">
-                   <li><i class="icon-check-1"></i>Once you've paid (see opposite) you will be receive an email receipt for your payment.</li>
-                   <li><i class="icon-check-1"></i>Within 14 days we will send your invoice, confirmation and a welcome pack including price list via the post.</li>
-                   <li><i class="icon-check-1"></i>You will receive a confirmation and reminder text from us, once you've been allocated your stylists to the day. Please feel free, to send any images you may have collected from your 'look' book via this text, but please keep them on your phone so we also have the images to refer to when we meet you.</li>
-                   <li><i class="icon-check-1"></i>We would ask that you keep your mobile switched on so we can keep in touch with you and contact you for your room number.</li>
-                   <li><i class="icon-check-1"></i>We allocate an appointment time to you and take into account party numbers, requirements and it will also be dependent on how many of our team assist your party.  It is not always the case that we will arrive at the same time.  We may stagger who arrives to start, in any such order we need to, for your allocated time.  PLEASE ALLOW 10-15 minutes either side of your appointment.  In instances where we may be earlier/later than this time we will contact you.  We may have other appointments on the same day but we will always endeavor to accommodate any additions you may have.</li>
-                </ul>                            
-                                       
-          
-             </div> 
-        </div>
-            
-            
-          </div>
+                <div class="separator clearfix"></div>
+                    <ul class="list-icons">
+                        <li><i class="icon-check-1"></i>Once you've paid (see opposite) you will be receive an email receipt for your payment.</li>
+                        <li><i class="icon-check-1"></i>Within 14 days we will send your invoice, confirmation and a welcome pack including price list via the post.</li>
+                        <li><i class="icon-check-1"></i>You will receive a confirmation and reminder text from us, once you've been allocated your stylists to the day. Please feel free, to send any images you may have collected from your 'look' book via this text, but please keep them on your phone so we also have the images to refer to when we meet you.</li>
+                        <li><i class="icon-check-1"></i>We would ask that you keep your mobile switched on so we can keep in touch with you and contact you for your room number.</li>
+                        <li><i class="icon-check-1"></i>We allocate an appointment time to you and take into account party numbers, requirements and it will also be dependent on how many of our team assist your party. It is not always the case that we will arrive at the same time. We may stagger who arrives to start, in any such order we need to, for your allocated time. PLEASE ALLOW 10-15 minutes either side of your appointment. In instances where we may be earlier/later than this time we will contact you. We may have other appointments on the same day but we will always endeavor to accommodate any additions you may have.</li>
+                    </ul>
+                </div>
 
-</div>
-</div>
+<!--END INFO BOX -->
+            
+        </div>
+    </div>
+</section>
 
 {% include 13subfooter.html%}
 
