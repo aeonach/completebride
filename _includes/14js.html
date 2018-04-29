@@ -9,16 +9,16 @@
 <!-- jQuery Revolution Slider  -->
 <script type="text/javascript" src="assets/plugins/rs-plugin-5/js/jquery.themepunch.tools.min.js?rev=5.0"></script>
 <script type="text/javascript" src="assets/plugins/rs-plugin-5/js/jquery.themepunch.revolution.min.js?rev=5.0"></script>
-<!-- Isotope javascript -->
+<!-- Isotope javascript 
 <script type="text/javascript" src="assets/plugins/isotope/imagesloaded.pkgd.min.js"></script>
-<script type="text/javascript" src="assets/plugins/isotope/isotope.pkgd.min.js"></script>
-<!-- Magnific Popup javascript -->
-<script type="text/javascript" src="assets/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="assets/plugins/isotope/isotope.pkgd.min.js"></script> -->
+<!-- Magnific Popup javascript 
+<script type="text/javascript" src="assets/plugins/magnific-popup/jquery.magnific-popup.min.js"></script> -->
 <!-- Appear javascript -->
 <script type="text/javascript" src="assets/plugins/waypoints/jquery.waypoints.min.js"></script>
-<script type="text/javascript" src="assets/plugins/waypoints/sticky.min.js"></script>
-<!-- Count To javascript -->
-<script type="text/javascript" src="assets/plugins/jquery.countTo.js"></script>
+<script type="text/javascript" src="assets/plugins/waypoints/sticky.min.js"></script> 
+<!-- Count To javascript 
+<script type="text/javascript" src="assets/plugins/jquery.countTo.js"></script> -->
 <!-- Parallax javascript -->
 <script src="assets/plugins/jquery.parallax-1.1.3.js"></script>
 <!-- Contact form -->
@@ -36,30 +36,6 @@
     $(document).ready(function() {
         // Initialize Smart Cart    	
         $('#smartcart').smartCart();
-    });
-
-
-    function submitform() {
-        $('#submit_handle').click();
-    }
-
-    //panels
-    $(document).on('click', '.panel-heading span.clickable', function(e) {
-        var $this = $(this);
-        if (!$this.hasClass('panel-collapsed')) {
-            $this.parents('.panel').find('.panel-body').slideDown();
-            $this.addClass('panel-collapsed');
-            $this.find('i').removeClass('fa-arrow-down').addClass('fa-arrow-up');
-        } else {
-            $this.parents('.panel').find('.panel-body').slideUp();
-            $this.removeClass('panel-collapsed');
-            $this.find('i').removeClass('fa-arrow-up').addClass('fa-arrow-down');
-        }
-
-
-        $().ready(function() {
-            $("#bride-hair-and-makeup").validate();
-        });
     });
 
 </script>
