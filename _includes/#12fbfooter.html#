@@ -1,0 +1,107 @@
+<!-- footer start (Add "dark" class to #footer in order to enable dark footer) -->
+<!-- ================ -->
+<footer id="footer" class="clearfix dark">
+    <span class="anchor" id="Footercontact"></span>
+    <!-- .footer start -->
+    <!-- ================ -->
+    <div class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="row">
+            
+            <div class="col-lg-4">
+              <div class="footer-content">
+                <div class="logo-footer"><img id="logo-footer" src="assets/images/logo.png" alt=""></img></div>
+                <p>ANY questions, or even just a chat about your requirements just get in touch with us. Details below, or click through to our Facebook page.</p>
+                <div class="separator-2"></div>
+                <nav>
+                  <ul class="nav flex-column">
+                    <li><a href="mailto:enquiries@completebride.co.uk"><i class="fa fa-envelope-o left"></i> enquiries@completebride.co.uk</a></li>    
+                    <li><a><i class="fa fa-mobile left"></i> 07879 062 939</a></li>
+                    <li>7 Ednam Street, Annan DG12 6EF</li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+
+            <div class="col-lg-4">
+              <div class="footer-content">
+                <h2 class="title">Gretna Hotels</h2>
+                <div class="separator-2"></div>
+                <div class="row grid-space-10">
+                  <div class="col-4 col-lg-6">
+                    <div class="overlay-container mb-10">
+                      <img src="assets/images/gallery-1.jpg" alt="The Mill Forge"><a href="portfolio-item.html" class="overlay-link small"><i class="fa fa-link"></i></a></img>
+                      <p>The Mill Forge</p>
+                    </div>
+                  </div>
+                  <div class="col-4 col-lg-6">
+                                    <div class="overlay-container mb-10">
+                                        <img src="assets/images/gallery-2.jpg" alt="">
+                                        <a href="portfolio-item.html" class="overlay-link small">
+                            <i class="fa fa-link"></i>
+                          </a>
+                                        <p>Solway Lodge</p>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-lg-6">
+                                    <div class="overlay-container mb-10">
+                                        <img src="assets/images/gallery-3.jpg" alt="">
+                                        <a href="portfolio-item.html" class="overlay-link small">
+                            <i class="fa fa-link"></i>
+                          </a>
+                                        <p>Gretna Hall</p>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-lg-6">
+                                    <div class="overlay-container mb-10">
+                                        <img src="assets/images/gallery-4.jpg" alt="">
+                                        <a href="portfolio-item.html" class="overlay-link small">
+                            <i class="fa fa-link"></i>
+                          </a>
+                                        <p>Gables Hotel</p>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-lg-6">
+                                    <div class="overlay-container mb-10">
+                                        <img src="assets/images/gallery-5.jpg" alt="">
+                                        <a href="portfolio-item.html" class="overlay-link small">
+                            <i class="fa fa-link"></i>
+                          </a>
+                                    </div>
+                                </div>
+                                <div class="col-4 col-lg-6">
+                                    <div class="overlay-container mb-10">
+                                        <img src="assets/images/gallery-6.jpg" alt="">
+                                        <a href="portfolio-item.html" class="overlay-link small">
+                            <i class="fa fa-link"></i>
+                          </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-right space-top">
+                                <a href="portfolio-grid-2-3-col.html" class="link-dark"><i class="fa fa-plus-circle pl-1 pr-1"></i>More</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="footer-content">
+                        <h2 class="title">Facebook Page</h2>
+                        <div class="separator-2"></div>
+                        <div class="fb-page" data-href="https://www.facebook.com/completebridegretnagreen/" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                          <blockquote cite="https://www.facebook.com/completebridegretnagreen/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/completebridegretnagreen/">Complete Bride</a></blockquote>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+            </div>
+        </div>
+    </div>
+    <!-- .footer end -->
+
+    {% include 13subfooter.html %}
+
+</footer>
+<!-- footer end -->
