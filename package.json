@@ -1,0 +1,14 @@
+{
+  "name": "completebride",
+  "version": "1.0.0",
+  "description": "Website for Kirsty",
+  "main": "index.js",
+  "repository": "https://github.com/aeonach/completebride.git",
+  "author": "design@davidcolquhoun.uk",
+  "license": "N/A",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "slick-carousel": "^1.8.1"
+  }
+}
