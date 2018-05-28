@@ -275,6 +275,9 @@ pre {
 .text-white {
   color: $white!important;
 }
+.text-l-grey {
+    color: $gray-lighter !important;
+}
 .well {
   @include border-radius(0px);
   background-color: #f3f3f3;
