@@ -7,7 +7,7 @@
  * License URI: http://support.wrapbootstrap.com/
  * File Description: Place here your custom scripts
  */
-
+/*
 (function($){
 	$(document).ready(function(){
         $("#testimonials").owlCarousel({
@@ -17,3 +17,4 @@
 	}); // End document ready
 
 })(this.jQuery);
+*/
