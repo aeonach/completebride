@@ -535,350 +535,327 @@
 			});
 		};
 
-		//Owl carousel
+		//Slick carousel
 		//-----------------------------------------------
-		if ($('.owl-carousel').length>0) {
-			$("*[dir='ltr'] .owl-carousel.carousel").owlCarousel({
-				items:1,
-				dots: false,
-				nav: true,
-				loop: true,
-				navText: false,
-				responsive:{
-					479:{
-						items:2
+		if ($('.slick-carousel').length>0) {
+			$("*[dir='ltr'] .slick-carousel.carousel").slick({
+				arrows: false,
+				slidesToShow: 4,
+				slidesToScroll: 4,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					768:{
-						items:2
+					{
+						breakpoint: 992,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					992:{
-						items:4
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					},
-					1200:{
-						items:4
+					{
+						breakpoint: 575,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					}
-				}
+				]
 			});
-			$("*[dir='rtl'] .owl-carousel.carousel").owlCarousel({
-				items:1,
+			$("*[dir='rtl'] .slick-carousel.carousel").slick({
 				rtl: true,
-				dots: false,
-				nav: true,
-				loop: true,
-				navText: false,
-				responsive:{
-					479:{
-						items:2
+				arrows: false,
+				slidesToShow: 4,
+				slidesToScroll: 4,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					768:{
-						items:2
+					{
+						breakpoint: 992,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					992:{
-						items:4
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					},
-					1200:{
-						items:4
+					{
+						breakpoint: 575,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					}
-				}
+				]
 			});
-			$("*[dir='ltr'] .owl-carousel.carousel-autoplay").owlCarousel({
-				items:1,
+			$("*[dir='ltr'] .slick-carousel.carousel-autoplay").slick({
+				arrows: false,
+				slidesToShow: 4,
+				slidesToScroll: 4,
 				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				dots: false,
-				nav: true,
-				navText: false,
-				responsive:{
-					479:{
-						items:2
+				autoplaySpeed: 5000,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					768:{
-						items:2
+					{
+						breakpoint: 992,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					992:{
-						items:4
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					},
-					1200:{
-						items:4
+					{
+						breakpoint: 575,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					}
-				}
+				]
 			});
-			$("*[dir='rtl'] .owl-carousel.carousel-autoplay").owlCarousel({
-				items:1,
+			$("*[dir='rtl'] .slick-carousel.carousel-autoplay").slick({
 				rtl: true,
+				arrows: false,
+				slidesToShow: 4,
+				slidesToScroll: 4,
 				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				dots: false,
-				nav: true,
-				navText: false,
-				responsive:{
-					479:{
-						items:2
+				autoplaySpeed: 5000,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					768:{
-						items:2
+					{
+						breakpoint: 992,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					992:{
-						items:4
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					},
-					1200:{
-						items:4
+					{
+						breakpoint: 575,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					}
-				}
+				]
 			});
-			$("*[dir='ltr'] .owl-carousel.clients").owlCarousel({
-				items:2,
+			$("*[dir='ltr'] .slick-carousel.clients").slick({
+				arrows: false,
+				slidesToShow: 6,
+				slidesToScroll: 6,
 				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				dots: false,
-				responsive:{
-					479:{
-						items:3
+				autoplaySpeed: 5000,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 6,
+							slidesToScroll: 6
+						}
 					},
-					768:{
-						items:4
+					{
+						breakpoint: 992,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					992:{
-						items:4
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					1200:{
-						items:6
+					{
+						breakpoint: 575,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 3
+						}
 					}
-				}
+				]
 			});
-			$("*[dir='rtl'] .owl-carousel.clients").owlCarousel({
-				items:2,
+			$("*[dir='rtl'] .slick-carousel.clients").slick({
 				rtl: true,
+				arrows: false,
+				slidesToShow: 6,
+				slidesToScroll: 6,
 				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				dots: false,
-				responsive:{
-					479:{
-						items:3
+				autoplaySpeed: 5000,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 6,
+							slidesToScroll: 6
+						}
 					},
-					768:{
-						items:4
+					{
+						breakpoint: 992,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					992:{
-						items:4
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					1200:{
-						items:6
+					{
+						breakpoint: 575,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 3
+						}
 					}
-				}
+				]
 			});
-			$("*[dir='ltr'] .owl-carousel.content-slider").owlCarousel({
-				items: 1,
+			$("*[dir='ltr'] .slick-carousel.content-slider").slick({
 				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				nav: false,
-				navText: false,
-				dots: false
+				autoplaySpeed: 5000,
+				arrows: false
 			});
-			$("*[dir='rtl'] .owl-carousel.content-slider").owlCarousel({
-				items: 1,
-				rtl: true,
+			$("*[dir='rtl'] .slick-carousel.content-slider").slick({
 				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				nav: false,
-				navText: false,
-				dots: false
+				autoplaySpeed: 5000,
+				arrows: false,
+				rtl: true
 			});
-			$("*[dir='ltr'] .owl-carousel.content-slider-with-controls").owlCarousel({
-				items: 1,
-				loop: true,
-				autoplay: false,
-				nav: true,
-				dots: true
-			});
-			$("*[dir='rtl'] .owl-carousel.content-slider-with-controls").owlCarousel({
-				items: 1,
-				loop: true,
-				rtl: true,
-				autoplay: false,
-				nav: true,
-				dots: true
-			});
-			$("*[dir='ltr'] .owl-carousel.content-slider-with-large-controls").owlCarousel({
-				items: 1,
-				loop: true,
-				autoplay: false,
-				nav: true,
-				dots: true
-			});
-			$("*[dir='rtl'] .owl-carousel.content-slider-with-large-controls").owlCarousel({
-				items: 1,
-				loop: true,
-				rtl: true,
-				autoplay: false,
-				nav: true,
-				dots: true
-			});
-			$("*[dir='ltr'] .owl-carousel.content-slider-with-controls-autoplay").owlCarousel({
-				items: 1,
-				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				nav: true,
-				dots: true
-			});
-			$("*[dir='rtl'] .owl-carousel.content-slider-with-controls-autoplay").owlCarousel({
-				items: 1,
-				autoplay: true,
-				rtl: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				nav: true,
-				dots: true
-			});
-			$("*[dir='ltr'] .owl-carousel.content-slider-with-large-controls-autoplay").owlCarousel({
-				items: 1,
-				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				nav: true,
-				dots: true
-			});
-			$("*[dir='rtl'] .owl-carousel.content-slider-with-large-controls-autoplay").owlCarousel({
-				items: 1,
-				autoplay: true,
-				rtl: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				nav: true,
-				dots: true
-			});
-			$("*[dir='ltr'] .owl-carousel.content-slider-with-controls-autoplay-hover-stop").owlCarousel({
-				items: 1,
-				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				nav: true,
+			$("*[dir='ltr'] .slick-carousel.content-slider-with-controls").slick({
 				dots: true,
-				autoplayHoverPause: true
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				prevArrow: '<button type="button" class="slick-prev">Prev</button>'
 			});
-			$("*[dir='rtl'] .owl-carousel.content-slider-with-controls-autoplay-hover-stop").owlCarousel({
-				items: 1,
-				autoplay: true,
-				rtl: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				nav: true,
+			$("*[dir='rtl'] .slick-carousel.content-slider-with-controls").slick({
 				dots: true,
-				autoplayHoverPause: true
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				prevArrow: '<button type="button" class="slick-prev">Prev</button>',
+				rtl: true
 			});
-
-			var sync1 = $(".owl-carousel.content-slider-with-thumbs");
-			var sync2 = $(".owl-carousel.content-slider-thumbs");
-			var slidesPerPage = 4; //globaly define number of elements per page
-			var syncedSecondary = true;
+			$("*[dir='ltr'] .slick-carousel.content-slider-with-large-controls").slick({
+				dots: true,
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				prevArrow: '<button type="button" class="slick-prev">Prev</button>'
+			});
+			$("*[dir='rtl'] .slick-carousel.content-slider-with-large-controls").slick({
+				dots: true,
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				prevArrow: '<button type="button" class="slick-prev">Prev</button>',
+				rtl: true
+			});
+			$("*[dir='ltr'] .slick-carousel.content-slider-with-controls-autoplay").slick({
+				autoplay: true,
+				autoplaySpeed: 5000,
+				dots: true,
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				prevArrow: '<button type="button" class="slick-prev">Prev</button>'
+			});
+			$("*[dir='rtl'] .slick-carousel.content-slider-with-controls-autoplay").slick({
+				autoplay: true,
+				autoplaySpeed: 5000,
+				dots: true,
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				prevArrow: '<button type="button" class="slick-prev">Prev</button>',
+				rtl: true
+			});
+			$("*[dir='ltr'] .slick-carousel.content-slider-with-large-controls-autoplay").slick({
+				autoplay: true,
+				autoplaySpeed: 5000,
+				dots: true,
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				prevArrow: '<button type="button" class="slick-prev">Prev</button>'
+			});
+			$("*[dir='rtl'] .slick-carousel.content-slider-with-large-controls-autoplay").slick({
+				autoplay: true,
+				autoplaySpeed: 5000,
+				dots: true,
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				prevArrow: '<button type="button" class="slick-prev">Prev</button>',
+				rtl: true
+			});
 
 			if ($("*[dir='ltr']").length>0) {
-				sync1.owlCarousel({
-					items : 1,
-					slideSpeed : 700,
-					nav: true,
-					autoplay: false,
-					dots: false,
-					loop: true,
-					responsiveRefreshRate : 200
-				}).on('changed.owl.carousel', syncPosition);
-
-				sync2.on('initialized.owl.carousel', function () {
-					sync2.find(".owl-item").eq(0).addClass("current");
-				}).owlCarousel({
-					items : slidesPerPage,
-					dots: false,
-					nav: false,
-					smartSpeed: 200,
-					slideSpeed : 500,
-					slideBy: slidesPerPage,
-					responsiveRefreshRate : 100
-				}).on('changed.owl.carousel', syncPosition2);
+				$('.slick-carousel.content-slider-with-thumbs').slick({
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					arrows: false,
+					fade: true,
+					asNavFor: '.slick-carousel.content-slider-thumbs'
+				});
+				$('.slick-carousel.content-slider-thumbs').slick({
+					slidesToShow: 4,
+					slidesToScroll: 1,
+					asNavFor: '.slick-carousel.content-slider-with-thumbs',
+					arrows: false,
+						focusOnSelect: true
+				});
 			} else {
-				sync1.owlCarousel({
-					items : 1,
-					slideSpeed : 700,
-					nav: true,
-					autoplay: false,
+				$('.slick-carousel.content-slider-with-thumbs').slick({
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					arrows: false,
+					fade: true,
+					asNavFor: '.slick-carousel.content-slider-thumbs',
+					rtl: true
+				});
+				$('.slick-carousel.content-slider-thumbs').slick({
+					slidesToShow: 4,
+					slidesToScroll: 1,
+					asNavFor: '.slick-carousel.content-slider-with-thumbs',
+					arrows: false,
 					rtl: true,
-					dots: false,
-					loop: true,
-					responsiveRefreshRate : 200
-				}).on('changed.owl.carousel', syncPosition);
-
-				sync2.on('initialized.owl.carousel', function () {
-					sync2.find(".owl-item").eq(0).addClass("current");
-				}).owlCarousel({
-					items : slidesPerPage,
-					dots: false,
-					nav: false,
-					rtl: true,
-					smartSpeed: 200,
-					slideSpeed : 500,
-					slideBy: slidesPerPage,
-					responsiveRefreshRate : 100
-				}).on('changed.owl.carousel', syncPosition2);
+						focusOnSelect: true
+				});
 			}
-			function syncPosition(el) {
-				//if you set loop to false, you have to restore this next line
-				//var current = el.item.index;
-
-				//if you disable loop you have to comment this block
-				var count = el.item.count-1;
-				var current = Math.round(el.item.index - (el.item.count/2) - .5);
-
-				if(current < 0) {
-					current = count;
-				}
-				if(current > count) {
-					current = 0;
-				}
-
-				//end block
-				sync2.find(".owl-item").removeClass("current").eq(current).addClass("current");
-				var onscreen = sync2.find('.owl-item.active').length - 1;
-				var start = sync2.find('.owl-item.active').first().index();
-				var end = sync2.find('.owl-item.active').last().index();
-
-				if (current > end) {
-					sync2.data('owl.carousel').to(current, 100, true);
-				}
-				if (current < start) {
-					sync2.data('owl.carousel').to(current - onscreen, 100, true);
-				}
-			}
-
-			function syncPosition2(el) {
-				if(syncedSecondary) {
-					var number = el.item.index;
-					sync1.data('owl.carousel').to(number, 100, true);
-				}
-			}
-
-			sync2.on("click", ".owl-item", function(e){
-				e.preventDefault();
-				var number = $(this).index();
-				sync1.data('owl.carousel').to(number, 300, true);
-			});
 		};
 
 		// Fixed header
