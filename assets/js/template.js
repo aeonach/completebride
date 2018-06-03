@@ -1,15 +1,13 @@
-/* Theme Name: The Project - Responsive Website Template
- * Author: HtmlCoder
- * Author URI:http://www.htmlcoder.me
- * Author e-mail:htmlcoder.me@gmail.com
- * Version: 2.0.5
- * Created: March 2015
- * License URI: http://support.wrapbootstrap.com/
+/*
+ * Version: 2.1
  * File Description: Initializations of plugins
  */
+(function($) {
 
-(function($){
-	$(document).ready(function(){
+	// USE STRICT
+	"use strict";
+
+	$(document).ready(function() {
 
 		if ($('.boxed .fullscreen-bg').length>0) {
 			$("body").addClass("transparent-page-wrapper");
@@ -17,13 +15,12 @@
 
 		//Show dropdown on hover only for desktop devices
 		//-----------------------------------------------
-		if (Modernizr.mq('only all and (min-width: 992px)')) {
+		if ($(window).width() > 975) {
 		$('.main-navigation:not(.onclick) .navbar-nav>li.dropdown, .main-navigation:not(.onclick) li.dropdown>ul>li.dropdown').hover(
-			function(){
-				var $this = $(this);
-				$this.addClass('show');
-				$this.find('>.dropdown-menu').addClass('show');
-			}, function(){
+			function() {
+				$(this).addClass('show');
+				$(this).find('>.dropdown-menu').addClass('show');
+			}, function() {
 				$(this).removeClass('show');
 				$(this).find('>.dropdown-menu').removeClass('show');
 			});
@@ -31,7 +28,7 @@
 
 		//Show dropdown on click only for mobile devices
 		//-----------------------------------------------
-		if (Modernizr.mq('only all and (max-width: 991px)') || $(".main-navigation.onclick").length>0 ) {
+		if ($(window).width() < 974 || $(".main-navigation.onclick").length>0 ) {
 			$('.header [data-toggle=dropdown], .header-top [data-toggle=dropdown]').on('click', function(event) {
 				// Avoid following the href location when clicking
 				event.preventDefault();
@@ -53,31 +50,21 @@
 		};
 
 		//Transparent Header Calculations
-		var timer_tr;
 		if ($(".transparent-header").length>0) {
-			var trHeaderHeight;
-			$(window).on('load', function (e) {
-				trHeaderHeight = $("header.header").outerHeight();
-				$(".transparent-header .tp-bannertimer").css("marginTop", (trHeaderHeight)+"px");
-			});
-			var headerTopHeightResize = $(".header-top").outerHeight();
-			$(window).resize(function() {
-				if ($(this).scrollTop()  < headerTopHeightResize + trHeaderHeight -5) {
+			(function(){
+				var trHeaderHeight;
+				$(window).on('load', function (e) {
 					trHeaderHeight = $("header.header").outerHeight();
 					$(".transparent-header .tp-bannertimer").css("marginTop", (trHeaderHeight)+"px");
-				}
-			});
-			$(window).scroll(function() {
-				if ($(this).scrollTop() == 0 ) {
-					if(timer_tr) {
-						window.clearTimeout(timer_tr);
-					};
-					timer_tr = window.setTimeout(function() {
+				});
+				var headerTopHeightResize = $(".header-top").outerHeight();
+				$(window).resize(function() {
+					if ($(this).scrollTop()  < headerTopHeightResize + trHeaderHeight -5) {
 						trHeaderHeight = $("header.header").outerHeight();
 						$(".transparent-header .tp-bannertimer").css("marginTop", (trHeaderHeight)+"px");
-					}, 300);
-				};
-			});
+					}
+				});
+			})();
 		}
 
 		if ($(".transparent-header .slideshow").length>0) {
@@ -88,7 +75,7 @@
 
 		//Full Width Slider with Transparent Header Calculations
 		if ($(".transparent-header .slider-banner-fullwidth-big-height").length>0) {
-			if (Modernizr.mq('only all and (max-width: 991px)')) {
+			if ($(window).width() < 991) {
 				$("body").removeClass("transparent-header");
 				$(".header-container header.header").removeClass("transparent-header-on");
 				$(".tp-bannertimer").css("marginTop", "0px");
@@ -102,7 +89,7 @@
 
 		if ($(".transparent-header .slider-banner-fullwidth-big-height").length>0 || $(".slider-banner-fullwidth-big-height-removed").length>0) {
 			$(window).resize(function() {
-				if (Modernizr.mq('only all and (max-width: 991px)')) {
+				if ($(window).width() < 991) {
 					$("body").removeClass("transparent-header");
 					$(".header-container header.header").removeClass("transparent-header-on");
 					$(".tp-bannertimer").css("marginTop", "0px");
@@ -114,59 +101,58 @@
 		};
 
 		//Mega menu fixed width
-		if ($('html[dir="ltr"] .container .mega-menu--wide').length>0 && Modernizr.mq('only all and (min-width: 992px)')) {
-			var headerSecondLeft = parseInt($('.main-navigation--mega-menu').closest('.header-second').parent().offset().left + 15),
-			headerFirstLeft = parseInt($('.header-first').offset().left),
-			megaMenuLeftPosition = headerFirstLeft - headerSecondLeft;
-			$('.mega-menu--wide > .dropdown-menu').css('left', megaMenuLeftPosition + 'px');
-			$(window).resize(function() {
+		if ($('html[dir="ltr"] .container .mega-menu--wide').length>0 && $(window).width() > 971) {
+			(function(){
 				var headerSecondLeft = parseInt($('.main-navigation--mega-menu').closest('.header-second').parent().offset().left + 15),
 				headerFirstLeft = parseInt($('.header-first').offset().left),
 				megaMenuLeftPosition = headerFirstLeft - headerSecondLeft;
 				$('.mega-menu--wide > .dropdown-menu').css('left', megaMenuLeftPosition + 'px');
-			});
+				$(window).resize(function() {
+					var headerSecondLeft = parseInt($('.main-navigation--mega-menu').closest('.header-second').parent().offset().left + 15),
+					headerFirstLeft = parseInt($('.header-first').offset().left),
+					megaMenuLeftPosition = headerFirstLeft - headerSecondLeft;
+					$('.mega-menu--wide > .dropdown-menu').css('left', megaMenuLeftPosition + 'px');
+				});
+			})();
 		}
-		if ($('html[dir="rtl"] .container .mega-menu--wide').length>0 && Modernizr.mq('only all and (min-width: 992px)')) {
-			var headerSecond = $('.main-navigation--mega-menu').closest('.header-second').parent(),
-			headerSecondRight = parseInt(headerSecond.offset().left + headerSecond.outerWidth()),
-			headerFirstRight = parseInt($('.header-first').offset().left + $('.header-first').outerWidth() + 15),
-			megaMenuRightPosition = headerSecondRight - headerFirstRight;
-			$('.mega-menu--wide > .dropdown-menu').css('right', megaMenuRightPosition + 'px');
-			$(window).resize(function() {
+		if ($('html[dir="rtl"] .container .mega-menu--wide').length>0 && $(window).width() > 971) {
+			(function(){
 				var headerSecond = $('.main-navigation--mega-menu').closest('.header-second').parent(),
 				headerSecondRight = parseInt(headerSecond.offset().left + headerSecond.outerWidth()),
 				headerFirstRight = parseInt($('.header-first').offset().left + $('.header-first').outerWidth() + 15),
 				megaMenuRightPosition = headerSecondRight - headerFirstRight;
 				$('.mega-menu--wide > .dropdown-menu').css('right', megaMenuRightPosition + 'px');
-			});
+				$(window).resize(function() {
+					var headerSecond = $('.main-navigation--mega-menu').closest('.header-second').parent(),
+					headerSecondRight = parseInt(headerSecond.offset().left + headerSecond.outerWidth()),
+					headerFirstRight = parseInt($('.header-first').offset().left + $('.header-first').outerWidth() + 15),
+					megaMenuRightPosition = headerSecondRight - headerFirstRight;
+					$('.mega-menu--wide > .dropdown-menu').css('right', megaMenuRightPosition + 'px');
+				});
+			})();
 		}
 
 		//Mega menu full width
-		if ($('html[dir="ltr"] .container-fluid .mega-menu--wide').length>0 && Modernizr.mq('only all and (min-width: 992px)')) {
-			var headerSecondLeft = parseInt($('.main-navigation--mega-menu').closest('.header-second').parent().offset().left + 15),
-			headerFirstLeft = parseInt($('.header-first').offset().left),
-			megaMenuLeftPosition = headerFirstLeft - headerSecondLeft,
-			megaMenuWidth = parseInt($('.header .container-fluid').width());
-			$('.mega-menu--wide > .dropdown-menu').css('left', megaMenuLeftPosition + 'px');
-			$('.mega-menu--wide > .dropdown-menu').css('width', megaMenuWidth + 'px');
-			$(window).resize(function() {
+		if ($('html[dir="ltr"] .container-fluid .mega-menu--wide').length>0 && $(window).width() > 971) {
+			(function(){
 				var headerSecondLeft = parseInt($('.main-navigation--mega-menu').closest('.header-second').parent().offset().left + 15),
 				headerFirstLeft = parseInt($('.header-first').offset().left),
 				megaMenuLeftPosition = headerFirstLeft - headerSecondLeft,
 				megaMenuWidth = parseInt($('.header .container-fluid').width());
 				$('.mega-menu--wide > .dropdown-menu').css('left', megaMenuLeftPosition + 'px');
 				$('.mega-menu--wide > .dropdown-menu').css('width', megaMenuWidth + 'px');
-			});
+				$(window).resize(function() {
+					var headerSecondLeft = parseInt($('.main-navigation--mega-menu').closest('.header-second').parent().offset().left + 15),
+					headerFirstLeft = parseInt($('.header-first').offset().left),
+					megaMenuLeftPosition = headerFirstLeft - headerSecondLeft,
+					megaMenuWidth = parseInt($('.header .container-fluid').width());
+					$('.mega-menu--wide > .dropdown-menu').css('left', megaMenuLeftPosition + 'px');
+					$('.mega-menu--wide > .dropdown-menu').css('width', megaMenuWidth + 'px');
+				});
+			})();
 		}
-		if ($('html[dir="rtl"] .container-fluid .mega-menu--wide').length>0 && Modernizr.mq('only all and (min-width: 992px)')) {
-			var headerSecond = $('.main-navigation--mega-menu').closest('.header-second').parent(),
-			headerSecondRight = parseInt(headerSecond.offset().left + headerSecond.outerWidth()),
-			headerFirstRight = parseInt($('.header-first').offset().left + $('.header-first').outerWidth() + 15),
-			megaMenuRightPosition = headerSecondRight - headerFirstRight;
-			megaMenuWidth = parseInt($('.header .container-fluid').width());
-			$('.mega-menu--wide > .dropdown-menu').css('right', megaMenuRightPosition + 'px');
-			$('.mega-menu--wide > .dropdown-menu').css('width', megaMenuWidth + 'px');
-			$(window).resize(function() {
+		if ($('html[dir="rtl"] .container-fluid .mega-menu--wide').length>0 && $(window).width() > 971) {
+			(function(){
 				var headerSecond = $('.main-navigation--mega-menu').closest('.header-second').parent(),
 				headerSecondRight = parseInt(headerSecond.offset().left + headerSecond.outerWidth()),
 				headerFirstRight = parseInt($('.header-first').offset().left + $('.header-first').outerWidth() + 15),
@@ -174,7 +160,16 @@
 				megaMenuWidth = parseInt($('.header .container-fluid').width());
 				$('.mega-menu--wide > .dropdown-menu').css('right', megaMenuRightPosition + 'px');
 				$('.mega-menu--wide > .dropdown-menu').css('width', megaMenuWidth + 'px');
-			});
+				$(window).resize(function() {
+					var headerSecond = $('.main-navigation--mega-menu').closest('.header-second').parent(),
+					headerSecondRight = parseInt(headerSecond.offset().left + headerSecond.outerWidth()),
+					headerFirstRight = parseInt($('.header-first').offset().left + $('.header-first').outerWidth() + 15),
+					megaMenuRightPosition = headerSecondRight - headerFirstRight;
+					megaMenuWidth = parseInt($('.header .container-fluid').width());
+					$('.mega-menu--wide > .dropdown-menu').css('right', megaMenuRightPosition + 'px');
+					$('.mega-menu--wide > .dropdown-menu').css('width', megaMenuWidth + 'px');
+				});
+			})();
 		}
 
 		//Revolution Slider 5
@@ -501,12 +496,69 @@
 				hideSliderAtLimit:0,
 				hideCaptionAtLimit:0,
 				hideAllCaptionAtLilmit:0,
-				shadow: 0,
-				fallbacks: {
-					simplifyAll:"off",
-					nextSlideOnWindowFocus:"off",
-					disableFocusListener:false,
-				}
+				shadow: 0
+			});
+			$('.slider-revolution-5-container .slider-banner-carousel-2').revolution({
+				sliderType:"carousel",
+				sliderLayout:"fullwidth",
+				dottedOverlay:"none",
+				delay:9000,
+				navigation: {
+					keyboardNavigation:"off",
+					keyboard_direction: "horizontal",
+					mouseScrollNavigation:"off",
+					mouseScrollReverse:"default",
+					onHoverStop:"on",
+					tabs: {
+						style:"gyges",
+						enable:true,
+						width:220,
+						height:80,
+						min_width:220,
+						wrapper_padding:0,
+		                wrapper_color:"transparent",
+						tmp:'<div class="tp-tab-content">  <span class="tp-tab-date">{{param1}}</span>  <span class="tp-tab-title">{{title}}</span></div><div class="tp-tab-image"></div>',
+						visibleAmount: 6,
+						hide_onmobile: true,
+						hide_under:1240,
+						hide_onleave:true,
+						hide_delay:200,
+						direction:"vertical",
+						span:true,
+						position:"inner",
+						space:0,
+						h_align:"left",
+						v_align:"center",
+						h_offset:0,
+						v_offset:0
+					}
+				},
+				carousel: {
+					horizontal_align: "center",
+					vertical_align: "center",
+					fadeout: "on",
+					maxVisibleItems: 5,
+					infinity: "on",
+					space: 0,
+					stretch: "off",
+					showLayersAllTime: "off",
+					easing: "Power3.easeInOut",
+					speed: "800"
+				},
+				responsiveLevels:[1199,991,767,575],
+				visibilityLevels:[1199,991,767,575],
+				gridwidth:[800,700,500,500],
+				gridheight:[600,600,500,500],
+				lazyType:"single",
+				shadow:0,
+				stopAfterLoops:-1,
+				stopAtSlide:-1,
+				shuffle:"off",
+				autoHeight:"off",
+				hideThumbsOnMobile:"off",
+				hideSliderAtLimit:0,
+				hideCaptionAtLimit:0,
+				hideAllCaptionAtLilmit:0
 			});
 		};
 
@@ -535,373 +587,354 @@
 			});
 		};
 
-		//Owl carousel
+		//Slick carousel
 		//-----------------------------------------------
-		if ($('.owl-carousel').length>0) {
-			$("*[dir='ltr'] .owl-carousel.carousel").owlCarousel({
-				items:1,
-				dots: false,
-				nav: true,
-				loop: true,
-				navText: false,
-				responsive:{
-					479:{
-						items:2
+		if ($('.slick-carousel').length>0) {
+			$("*[dir='ltr'] .slick-carousel.carousel").slick({
+				arrows: false,
+				slidesToShow: 4,
+				slidesToScroll: 4,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					768:{
-						items:2
+					{
+						breakpoint: 992,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					992:{
-						items:4
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					},
-					1200:{
-						items:4
+					{
+						breakpoint: 575,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					}
-				}
+				]
 			});
-			$("*[dir='rtl'] .owl-carousel.carousel").owlCarousel({
-				items:1,
+			$("*[dir='rtl'] .slick-carousel.carousel").slick({
 				rtl: true,
-				dots: false,
-				nav: true,
-				loop: true,
-				navText: false,
-				responsive:{
-					479:{
-						items:2
+				arrows: false,
+				slidesToShow: 4,
+				slidesToScroll: 4,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					768:{
-						items:2
+					{
+						breakpoint: 992,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					992:{
-						items:4
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					},
-					1200:{
-						items:4
+					{
+						breakpoint: 575,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					}
-				}
+				]
 			});
-			$("*[dir='ltr'] .owl-carousel.carousel-autoplay").owlCarousel({
-				items:1,
+			$("*[dir='ltr'] .slick-carousel.carousel-autoplay").slick({
+				arrows: false,
+				slidesToShow: 4,
+				slidesToScroll: 4,
 				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				dots: false,
-				nav: true,
-				navText: false,
-				responsive:{
-					479:{
-						items:2
+				autoplaySpeed: 5000,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					768:{
-						items:2
+					{
+						breakpoint: 992,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					992:{
-						items:4
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					},
-					1200:{
-						items:4
+					{
+						breakpoint: 575,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					}
-				}
+				]
 			});
-			$("*[dir='rtl'] .owl-carousel.carousel-autoplay").owlCarousel({
-				items:1,
+			$("*[dir='rtl'] .slick-carousel.carousel-autoplay").slick({
 				rtl: true,
+				arrows: false,
+				slidesToShow: 4,
+				slidesToScroll: 4,
 				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				dots: false,
-				nav: true,
-				navText: false,
-				responsive:{
-					479:{
-						items:2
+				autoplaySpeed: 5000,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					768:{
-						items:2
+					{
+						breakpoint: 992,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					992:{
-						items:4
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					},
-					1200:{
-						items:4
+					{
+						breakpoint: 575,
+						settings: {
+							slidesToShow: 2,
+							slidesToScroll: 2
+						}
 					}
-				}
+				]
 			});
-			$("*[dir='ltr'] .owl-carousel.clients").owlCarousel({
-				items:2,
+			$("*[dir='ltr'] .slick-carousel.clients").slick({
+				arrows: false,
+				slidesToShow: 6,
+				slidesToScroll: 6,
 				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				dots: false,
-				responsive:{
-					479:{
-						items:3
+				autoplaySpeed: 5000,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 6,
+							slidesToScroll: 6
+						}
 					},
-					768:{
-						items:4
+					{
+						breakpoint: 992,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					992:{
-						items:4
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					1200:{
-						items:6
+					{
+						breakpoint: 575,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 3
+						}
 					}
-				}
+				]
 			});
-			$("*[dir='rtl'] .owl-carousel.clients").owlCarousel({
-				items:2,
+			$("*[dir='rtl'] .slick-carousel.clients").slick({
 				rtl: true,
+				arrows: false,
+				slidesToShow: 6,
+				slidesToScroll: 6,
 				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				dots: false,
-				responsive:{
-					479:{
-						items:3
+				autoplaySpeed: 5000,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							slidesToShow: 6,
+							slidesToScroll: 6
+						}
 					},
-					768:{
-						items:4
+					{
+						breakpoint: 992,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					992:{
-						items:4
+					{
+						breakpoint: 768,
+						settings: {
+							slidesToShow: 4,
+							slidesToScroll: 4
+						}
 					},
-					1200:{
-						items:6
+					{
+						breakpoint: 575,
+						settings: {
+							slidesToShow: 3,
+							slidesToScroll: 3
+						}
 					}
-				}
+				]
 			});
-			$("*[dir='ltr'] .owl-carousel.content-slider").owlCarousel({
-				items: 1,
+			$("*[dir='ltr'] .slick-carousel.content-slider").slick({
 				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				nav: false,
-				navText: false,
-				dots: false
+				autoplaySpeed: 5000,
+				arrows: false
 			});
-			$("*[dir='rtl'] .owl-carousel.content-slider").owlCarousel({
-				items: 1,
-				rtl: true,
+			$("*[dir='rtl'] .slick-carousel.content-slider").slick({
 				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				nav: false,
-				navText: false,
-				dots: false
+				autoplaySpeed: 5000,
+				arrows: false,
+				rtl: true
 			});
-			$("*[dir='ltr'] .owl-carousel.content-slider-with-controls").owlCarousel({
-				items: 1,
-				loop: true,
-				autoplay: false,
-				nav: true,
-				dots: true
-			});
-			$("*[dir='rtl'] .owl-carousel.content-slider-with-controls").owlCarousel({
-				items: 1,
-				loop: true,
-				rtl: true,
-				autoplay: false,
-				nav: true,
-				dots: true
-			});
-			$("*[dir='ltr'] .owl-carousel.content-slider-with-large-controls").owlCarousel({
-				items: 1,
-				loop: true,
-				autoplay: false,
-				nav: true,
-				dots: true
-			});
-			$("*[dir='rtl'] .owl-carousel.content-slider-with-large-controls").owlCarousel({
-				items: 1,
-				loop: true,
-				rtl: true,
-				autoplay: false,
-				nav: true,
-				dots: true
-			});
-			$("*[dir='ltr'] .owl-carousel.content-slider-with-controls-autoplay").owlCarousel({
-				items: 1,
-				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				nav: true,
-				dots: true
-			});
-			$("*[dir='rtl'] .owl-carousel.content-slider-with-controls-autoplay").owlCarousel({
-				items: 1,
-				autoplay: true,
-				rtl: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				nav: true,
-				dots: true
-			});
-			$("*[dir='ltr'] .owl-carousel.content-slider-with-large-controls-autoplay").owlCarousel({
-				items: 1,
-				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				nav: true,
-				dots: true
-			});
-			$("*[dir='rtl'] .owl-carousel.content-slider-with-large-controls-autoplay").owlCarousel({
-				items: 1,
-				autoplay: true,
-				rtl: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				nav: true,
-				dots: true
-			});
-			$("*[dir='ltr'] .owl-carousel.content-slider-with-controls-autoplay-hover-stop").owlCarousel({
-				items: 1,
-				autoplay: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				nav: true,
+			$("*[dir='ltr'] .slick-carousel.content-slider-with-controls").slick({
 				dots: true,
-				autoplayHoverPause: true
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				prevArrow: '<button type="button" class="slick-prev">Prev</button>'
 			});
-			$("*[dir='rtl'] .owl-carousel.content-slider-with-controls-autoplay-hover-stop").owlCarousel({
-				items: 1,
-				autoplay: true,
-				rtl: true,
-				autoplayTimeout: 5000,
-				autoplaySpeed: 700,
-				loop: true,
-				nav: true,
+			$("*[dir='rtl'] .slick-carousel.content-slider-with-controls").slick({
 				dots: true,
-				autoplayHoverPause: true
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				prevArrow: '<button type="button" class="slick-prev">Prev</button>',
+				rtl: true
 			});
-
-			var sync1 = $(".owl-carousel.content-slider-with-thumbs");
-			var sync2 = $(".owl-carousel.content-slider-thumbs");
-			var slidesPerPage = 4; //globaly define number of elements per page
-			var syncedSecondary = true;
+			$("*[dir='ltr'] .slick-carousel.content-slider-with-large-controls").slick({
+				dots: true,
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				prevArrow: '<button type="button" class="slick-prev">Prev</button>'
+			});
+			$("*[dir='rtl'] .slick-carousel.content-slider-with-large-controls").slick({
+				dots: true,
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				prevArrow: '<button type="button" class="slick-prev">Prev</button>',
+				rtl: true
+			});
+			$("*[dir='ltr'] .slick-carousel.content-slider-with-controls-autoplay").slick({
+				autoplay: true,
+				autoplaySpeed: 5000,
+				dots: true,
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				prevArrow: '<button type="button" class="slick-prev">Prev</button>'
+			});
+			$("*[dir='rtl'] .slick-carousel.content-slider-with-controls-autoplay").slick({
+				autoplay: true,
+				autoplaySpeed: 5000,
+				dots: true,
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				prevArrow: '<button type="button" class="slick-prev">Prev</button>',
+				rtl: true
+			});
+			$("*[dir='ltr'] .slick-carousel.content-slider-with-large-controls-autoplay").slick({
+				autoplay: true,
+				autoplaySpeed: 5000,
+				dots: true,
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				prevArrow: '<button type="button" class="slick-prev">Prev</button>'
+			});
+			$("*[dir='rtl'] .slick-carousel.content-slider-with-large-controls-autoplay").slick({
+				autoplay: true,
+				autoplaySpeed: 5000,
+				dots: true,
+				nextArrow: '<button type="button" class="slick-next">Next</button>',
+				prevArrow: '<button type="button" class="slick-prev">Prev</button>',
+				rtl: true
+			});
 
 			if ($("*[dir='ltr']").length>0) {
-				sync1.owlCarousel({
-					items : 1,
-					slideSpeed : 700,
-					nav: true,
-					autoplay: false,
-					dots: false,
-					loop: true,
-					responsiveRefreshRate : 200
-				}).on('changed.owl.carousel', syncPosition);
-
-				sync2.on('initialized.owl.carousel', function () {
-					sync2.find(".owl-item").eq(0).addClass("current");
-				}).owlCarousel({
-					items : slidesPerPage,
-					dots: false,
-					nav: false,
-					smartSpeed: 200,
-					slideSpeed : 500,
-					slideBy: slidesPerPage,
-					responsiveRefreshRate : 100
-				}).on('changed.owl.carousel', syncPosition2);
+				$('.slick-carousel.content-slider-with-thumbs').slick({
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					arrows: false,
+					fade: true,
+					asNavFor: '.slick-carousel.content-slider-thumbs'
+				});
+				$('.slick-carousel.content-slider-thumbs').slick({
+					slidesToShow: 4,
+					slidesToScroll: 1,
+					asNavFor: '.slick-carousel.content-slider-with-thumbs',
+					arrows: false,
+						focusOnSelect: true
+				});
 			} else {
-				sync1.owlCarousel({
-					items : 1,
-					slideSpeed : 700,
-					nav: true,
-					autoplay: false,
+				$('.slick-carousel.content-slider-with-thumbs').slick({
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					arrows: false,
+					fade: true,
+					asNavFor: '.slick-carousel.content-slider-thumbs',
+					rtl: true
+				});
+				$('.slick-carousel.content-slider-thumbs').slick({
+					slidesToShow: 4,
+					slidesToScroll: 1,
+					asNavFor: '.slick-carousel.content-slider-with-thumbs',
+					arrows: false,
 					rtl: true,
-					dots: false,
-					loop: true,
-					responsiveRefreshRate : 200
-				}).on('changed.owl.carousel', syncPosition);
-
-				sync2.on('initialized.owl.carousel', function () {
-					sync2.find(".owl-item").eq(0).addClass("current");
-				}).owlCarousel({
-					items : slidesPerPage,
-					dots: false,
-					nav: false,
-					rtl: true,
-					smartSpeed: 200,
-					slideSpeed : 500,
-					slideBy: slidesPerPage,
-					responsiveRefreshRate : 100
-				}).on('changed.owl.carousel', syncPosition2);
+						focusOnSelect: true
+				});
 			}
-			function syncPosition(el) {
-				//if you set loop to false, you have to restore this next line
-				//var current = el.item.index;
-
-				//if you disable loop you have to comment this block
-				var count = el.item.count-1;
-				var current = Math.round(el.item.index - (el.item.count/2) - .5);
-
-				if(current < 0) {
-					current = count;
-				}
-				if(current > count) {
-					current = 0;
-				}
-
-				//end block
-				sync2.find(".owl-item").removeClass("current").eq(current).addClass("current");
-				var onscreen = sync2.find('.owl-item.active').length - 1;
-				var start = sync2.find('.owl-item.active').first().index();
-				var end = sync2.find('.owl-item.active').last().index();
-
-				if (current > end) {
-					sync2.data('owl.carousel').to(current, 100, true);
-				}
-				if (current < start) {
-					sync2.data('owl.carousel').to(current - onscreen, 100, true);
-				}
-			}
-
-			function syncPosition2(el) {
-				if(syncedSecondary) {
-					var number = el.item.index;
-					sync1.data('owl.carousel').to(number, 100, true);
-				}
-			}
-
-			sync2.on("click", ".owl-item", function(e){
-				e.preventDefault();
-				var number = $(this).index();
-				sync1.data('owl.carousel').to(number, 300, true);
-			});
 		};
 
 		// Fixed header
 		//-----------------------------------------------
-		if (($(".header.fixed.fixed-desktop").length > 0) && Modernizr.mq('only all and (min-width: 992px)')) {
-			var sticky = new Waypoint.Sticky({
-				element: $('.header-container .header.fixed'),
-				stuckClass: 'object-visible',
-				handler: function(direction) {
-					$('body').toggleClass('fixed-header-on');
-				},
-				offset: -1
-			});
+		if (($(".header.fixed.fixed-desktop").length > 0) && ($(window).width() > 1000)) {
+			(function(){
+				var sticky = new Waypoint.Sticky({
+					element: $('.header-container .header.fixed'),
+					stuckClass: 'object-visible',
+					handler: function(direction) {
+						$('body').toggleClass('fixed-header-on');
+					},
+					offset: -1
+				});
+			})();
 		};
 		if ($(".header.fixed.fixed-all").length > 0) {
-			var sticky = new Waypoint.Sticky({
-				element: $('.header-container .header.fixed'),
-				stuckClass: 'object-visible',
-				handler: function(direction) {
-					$('body').toggleClass('fixed-header-on');
-				},
-				offset: -1
-			});
+			(function(){
+				var sticky = new Waypoint.Sticky({
+					element: $('.header-container .header.fixed'),
+					stuckClass: 'object-visible',
+					handler: function(direction) {
+						$('body').toggleClass('fixed-header-on');
+					},
+					offset: -1
+				});
+			})();
 		};
 
 		// Charts
@@ -911,37 +944,37 @@
 			var randomScalingFactor = function(){ return Math.round(Math.random()*500)};
 
 			if ($(".graph.line").length>0) {
-				// Data for line charts
-				var lineChartData = {
-					labels: ["January", "February", "March", "April", "May", "June", "July"],
-					datasets: [
-					{
-						label: "My First dataset",
-						fill: false,
-						lineTension: 0.1,
-						backgroundColor: "rgba(75,192,192,0.4)",
-						borderColor: "rgba(75,192,192,1)",
-						borderCapStyle: 'butt',
-						borderDash: [],
-						borderDashOffset: 0.0,
-						borderJoinStyle: 'miter',
-						pointBorderColor: "rgba(75,192,192,1)",
-						pointBackgroundColor: "#fff",
-						pointBorderWidth: 1,
-						pointHoverRadius: 5,
-						pointHoverBackgroundColor: "rgba(75,192,192,1)",
-						pointHoverBorderColor: "rgba(220,220,220,1)",
-						pointHoverBorderWidth: 2,
-						pointRadius: 1,
-						pointHitRadius: 10,
-						data: [65, 59, 80, 81, 56, 55, 40],
-						spanGaps: false,
-					}
-					]
-				};
+				(function(){
+					// Data for line charts
+					var lineChartData = {
+						labels: ["January", "February", "March", "April", "May", "June", "July"],
+						datasets: [
+						{
+							label: "My First dataset",
+							fill: false,
+							lineTension: 0.1,
+							backgroundColor: "rgba(75,192,192,0.4)",
+							borderColor: "rgba(75,192,192,1)",
+							borderCapStyle: 'butt',
+							borderDash: [],
+							borderDashOffset: 0.0,
+							borderJoinStyle: 'miter',
+							pointBorderColor: "rgba(75,192,192,1)",
+							pointBackgroundColor: "#fff",
+							pointBorderWidth: 1,
+							pointHoverRadius: 5,
+							pointHoverBackgroundColor: "rgba(75,192,192,1)",
+							pointHoverBorderColor: "rgba(220,220,220,1)",
+							pointHoverBorderWidth: 2,
+							pointRadius: 1,
+							pointHitRadius: 10,
+							data: [65, 59, 80, 81, 56, 55, 40],
+							spanGaps: false,
+						}
+						]
+					};
 
-				// Line Charts Initialization
-				$(window).on('load', function (e) {
+					// Line Charts Initialization
 					var ctx = document.getElementById("lines-graph").getContext("2d");
 					var LineChart = new Chart(ctx, {
 						type: 'line',
@@ -949,128 +982,128 @@
 						responsive: true,
 						bezierCurve : false
 					});
-				});
+				})();
 			}
 			if ($(".graph.bar").length>0) {
-				// Data for bar charts
-				var barChartData = {
-					labels: ["January", "February", "March", "April", "May", "June", "July"],
-					datasets: [
-					{
-						label: "My First dataset",
-						backgroundColor: [
-						'rgba(255, 99, 132, 0.2)',
-						'rgba(54, 162, 235, 0.2)',
-						'rgba(255, 206, 86, 0.2)',
-						'rgba(75, 192, 192, 0.2)',
-						'rgba(153, 102, 255, 0.2)',
-						'rgba(255, 159, 64, 0.2)'
-						],
-						borderColor: [
-						'rgba(255,99,132,1)',
-						'rgba(54, 162, 235, 1)',
-						'rgba(255, 206, 86, 1)',
-						'rgba(75, 192, 192, 1)',
-						'rgba(153, 102, 255, 1)',
-						'rgba(255, 159, 64, 1)'
-						],
-						borderWidth: 1,
-						data: [65, 59, 80, 81, 56, 55, 40],
-					}
-					]
-				};
+				(function(){
+					// Data for bar charts
+					var barChartData = {
+						labels: ["January", "February", "March", "April", "May", "June", "July"],
+						datasets: [
+						{
+							label: "My First dataset",
+							backgroundColor: [
+							'rgba(255, 99, 132, 0.2)',
+							'rgba(54, 162, 235, 0.2)',
+							'rgba(255, 206, 86, 0.2)',
+							'rgba(75, 192, 192, 0.2)',
+							'rgba(153, 102, 255, 0.2)',
+							'rgba(255, 159, 64, 0.2)'
+							],
+							borderColor: [
+							'rgba(255,99,132,1)',
+							'rgba(54, 162, 235, 1)',
+							'rgba(255, 206, 86, 1)',
+							'rgba(75, 192, 192, 1)',
+							'rgba(153, 102, 255, 1)',
+							'rgba(255, 159, 64, 1)'
+							],
+							borderWidth: 1,
+							data: [65, 59, 80, 81, 56, 55, 40],
+						}
+						]
+					};
 
-				// Bar Charts Initialization
-				$(window).on('load', function (e) {
+					// Bar Charts Initialization
 					var ctx = document.getElementById("bars-graph").getContext("2d");
 					var BarChart = new Chart(ctx, {
 						type: 'bar',
 						data: barChartData,
 						responsive : true
 					});
-				});
+				})();
 			}
 			if ($(".graph.pie").length>0) {
-				// Data for pie chart
-				var pieData = {
-					labels: [
-					"Red",
-					"Blue",
-					"Yellow"
-					],
-					datasets: [
-					{
-						data: [300, 50, 100],
-						backgroundColor: [
-						"#FF6384",
-						"#36A2EB",
-						"#FFCE56"
+				(function(){
+					// Data for pie chart
+					var pieData = {
+						labels: [
+						"Red",
+						"Blue",
+						"Yellow"
 						],
-						hoverBackgroundColor: [
-						"#FF6384",
-						"#36A2EB",
-						"#FFCE56"
-						]
-					}]
-				};
+						datasets: [
+						{
+							data: [300, 50, 100],
+							backgroundColor: [
+							"#FF6384",
+							"#36A2EB",
+							"#FFCE56"
+							],
+							hoverBackgroundColor: [
+							"#FF6384",
+							"#36A2EB",
+							"#FFCE56"
+							]
+						}]
+					};
 
-				// Pie Chart Initialization
-				$(window).on('load', function (e) {
+					// Pie Chart Initialization
 					var ctx = document.getElementById("pie-graph").getContext("2d");
 					var PieChart = new Chart(ctx,{
 						type: 'pie',
 						data: pieData
 					});
-				});
+				})();
 			}
 			if ($(".graph.doughnut").length>0) {
-				// Data for doughnut chart
-				var doughnutData = {
-					labels: [
-					"Red",
-					"Blue",
-					"Yellow"
-					],
-					datasets: [
-					{
-						data: [300, 50, 100],
-						backgroundColor: [
-						"#FF6384",
-						"#36A2EB",
-						"#FFCE56"
+				(function(){
+					// Data for doughnut chart
+					var doughnutData = {
+						labels: [
+						"Red",
+						"Blue",
+						"Yellow"
 						],
-						hoverBackgroundColor: [
-						"#FF6384",
-						"#36A2EB",
-						"#FFCE56"
-						]
-					}]
-				};
+						datasets: [
+						{
+							data: [300, 50, 100],
+							backgroundColor: [
+							"#FF6384",
+							"#36A2EB",
+							"#FFCE56"
+							],
+							hoverBackgroundColor: [
+							"#FF6384",
+							"#36A2EB",
+							"#FFCE56"
+							]
+						}]
+					};
 
-				// Doughnut Chart Initialization
-				$(window).on('load', function (e) {
+					// Doughnut Chart Initialization
 					var ctx = document.getElementById("doughnut-graph").getContext("2d");
 					var DoughnutChart = new Chart(ctx, {
 						type: 'doughnut',
 						data: doughnutData,
 						responsive : true
 					});
-				});
+				})();
 			}
 		};
 
 		// Magnific popup
 		//-----------------------------------------------
-		if (($(".popup-img").length > 0) || ($(".popup-iframe").length > 0) || ($(".popup-img-single").length > 0) || $(".owl-carousel--popup-img").length > 0) {
+		if (($(".popup-img").length > 0) || ($(".popup-iframe").length > 0) || ($(".popup-img-single").length > 0) || $(".slick-carousel--popup-img").length > 0) {
 			$(".popup-img").magnificPopup({
 				type:"image",
 				gallery: {
 					enabled: true,
 				}
 			});
-			if ($(".owl-carousel--popup-img").length > 0) {
-				$(".owl-carousel").each(function() {
-					$(this).find(".owl-item:not(.cloned) .owl-carousel--popup-img").magnificPopup({
+			if ($(".slick-carousel--popup-img").length > 0) {
+				$(".slick-carousel").each(function() {
+					$(this).find(".slick-slide:not(.slick-cloned) .slick-carousel--popup-img").magnificPopup({
 						type:"image",
 						gallery: {
 							enabled: true,
@@ -1096,30 +1129,35 @@
 		//-----------------------------------------------
 		if ($("[data-animation-effect]").length>0) {
 			$("[data-animation-effect]").each(function() {
-				if(Modernizr.csstransitions) {
-					var waypoints = $(this).waypoint(function(direction) {
-						animatedObject = $(this.element);
-						animatedObject.addClass('animated object-visible ' + animatedObject.attr("data-animation-effect"));
-						this.destroy();
-					},{
-						offset: '90%'
-					});
-				} else {
-					$(this).addClass('object-visible');
-				}
+				var waypoints = $(this).waypoint(function(direction) {
+					var animatedObject;
+					animatedObject = $(this.element);
+					animatedObject.addClass('animated object-visible ' + animatedObject.attr("data-animation-effect"));
+					this.destroy();
+				},{
+					offset: '90%'
+				});
+			});
+		};
+
+		// Slider animations
+		//-----------------------------------------------
+		if ($("[data-caption-effect]").length>0) {
+			$("[data-caption-effect]").each(function() {
+				$(this).addClass($(this).attr("data-caption-effect"));
 			});
 		};
 
 		// Text Rotators
 		//-----------------------------------------------
 		if ($(".text-rotator").length>0) {
-			$(".text-rotator").each(function() {
-				var tr_animationEffect = $(this).attr("data-rotator-animation-effect");
-				$(this).Morphext({
-					animation: ""+tr_animationEffect+"", // Overrides default "bounceIn"
-					separator: ",", // Overrides default ","
-					speed: 3000 // Overrides default 2000
-				});
+			var typed = new Typed('#text-rotator', {
+				stringsElement: '#text-rotator-text',
+				typeSpeed: 40,
+				backSpeed: 30,
+				backDelay: 4000,
+				smartBackspace: true,
+				loop: true
 			});
 		};
 
@@ -1128,6 +1166,7 @@
 		if ($(".stats [data-to]").length>0) {
 			$(".stats [data-to]").each(function() {
 				var waypoints = $(this).waypoint(function(direction) {
+					var countingObject;
 					countingObject = $(this.element);
 					countingObject.countTo();
 					this.destroy();
@@ -1187,36 +1226,14 @@
 		//-----------------------------------------------
 		if ($("[data-animate-width]").length>0) {
 			$("[data-animate-width]").each(function() {
-				if (!Modernizr.csstransitions) {
-					$(this).find("span").hide();
-				};
 				var waypoints = $(this).waypoint(function(direction) {
-					$(this.element).animate({width: $(this.element).attr("data-animate-width")}, 800 );
+					$(this.element).animate({width: parseInt($(this.element).attr("data-animate-width")) + '%'}, 800 );
 					this.destroy();
-					if (!Modernizr.csstransitions) {
-						$(this.element).find("span").show('slow');
-					};
 				},{
 					offset: '90%'
 				});
 			});
 		};
-
-		// Animated Circular Progress Bars
-		//-----------------------------------------------
-		if ($(".knob").length>0) {
-
-			$(".knob").knob();
-			$(".knob").each(function() {
-				var animateVal = $(this).attr("data-animate-value");
-				$(this).animate({animatedVal: animateVal}, {
-					duration: 2000,
-					step: function() {
-						$(this).val(Math.ceil(this.animatedVal)).trigger("change");
-					}
-				});
-			});
-		}
 
 		//Scroll totop
 		//-----------------------------------------------
@@ -1251,391 +1268,6 @@
 			});
 		};
 
-		// Contact forms validation
-		//-----------------------------------------------
-		if($("#contact-form").length>0) {
-			$("#contact-form").validate({
-				submitHandler: function(form) {
-					$('.submit-button').button("loading");
-					$.ajax({
-						type: "POST",
-						url: "php/email-sender.php",
-						data: {
-							"name": $("#contact-form #name").val(),
-							"email": $("#contact-form #email").val(),
-							"subject": $("#contact-form #subject").val(),
-							"message": $("#contact-form #message").val()
-						},
-						dataType: "json",
-						success: function (data) {
-							if (data.sent == "yes") {
-								$("#MessageSent").removeClass("hidden-xs-up");
-								$("#MessageNotSent").addClass("hidden-xs-up");
-								$(".submit-button").removeClass("btn-default").addClass("btn-success").prop('value', 'Message Sent');
-								$("#contact-form .form-control").each(function() {
-									$(this).prop('value', '').parent().removeClass("has-success").removeClass("has-error");
-								});
-							} else {
-								$("#MessageNotSent").removeClass("hidden-xs-up");
-								$("#MessageSent").addClass("hidden-xs-up");
-							}
-						}
-					});
-				},
-				errorPlacement: function(error, element) {
-					error.insertBefore( element );
-				},
-				onkeyup: false,
-				onclick: false,
-				rules: {
-					name: {
-						required: true,
-						minlength: 2
-					},
-					email: {
-						required: true,
-						email: true
-					},
-					subject: {
-						required: true
-					},
-					message: {
-						required: true,
-						minlength: 10
-					}
-				},
-				messages: {
-					name: {
-						required: "Please specify your name",
-						minlength: "Your name must be longer than 2 characters"
-					},
-					email: {
-						required: "We need your email address to contact you",
-						email: "Please enter a valid email address e.g. name@domain.com"
-					},
-					subject: {
-						required: "Please enter a subject"
-					},
-					message: {
-						required: "Please enter a message",
-						minlength: "Your message must be longer than 10 characters"
-					}
-				},
-				errorElement: "span",
-				highlight: function (element) {
-					$(element).parent().removeClass("has-success").addClass("has-error");
-					$(element).siblings("label").addClass("hide");
-				},
-				success: function (element) {
-					$(element).parent().removeClass("has-error").addClass("has-success");
-					$(element).siblings("label").removeClass("hide");
-				}
-			});
-		};
-
-		if($("#contact-form-with-recaptcha").length>0) {
-			$("#contact-form-with-recaptcha").validate({
-				submitHandler: function(form) {
-					$('.submit-button').button("loading");
-					$.ajax({
-						type: "POST",
-						url: "php/email-sender-recaptcha.php",
-						data: {
-							"name": $("#contact-form-with-recaptcha #name").val(),
-							"email": $("#contact-form-with-recaptcha #email").val(),
-							"subject": $("#contact-form-with-recaptcha #subject").val(),
-							"message": $("#contact-form-with-recaptcha #message").val(),
-							"g-recaptcha-response": $("#g-recaptcha-response").val()
-						},
-						dataType: "json",
-						success: function (data) {
-							if (data.sent == "yes") {
-								$("#MessageSent").removeClass("hidden-xs-up");
-								$("#MessageNotSent").addClass("hidden-xs-up");
-								$(".submit-button").removeClass("btn-default").addClass("btn-success").prop('value', 'Message Sent');
-								$("#contact-form-with-recaptcha .form-control").each(function() {
-									$(this).prop('value', '').parent().removeClass("has-success").removeClass("has-error");
-								});
-							} else {
-								$("#MessageNotSent").removeClass("hidden-xs-up");
-								$("#MessageSent").addClass("hidden-xs-up");
-							}
-						}
-					});
-				},
-				errorPlacement: function(error, element) {
-					error.insertBefore( element );
-				},
-				onkeyup: false,
-				onclick: false,
-				rules: {
-					name: {
-						required: true,
-						minlength: 2
-					},
-					email: {
-						required: true,
-						email: true
-					},
-					subject: {
-						required: true
-					},
-					message: {
-						required: true,
-						minlength: 10
-					}
-				},
-				messages: {
-					name: {
-						required: "Please specify your name",
-						minlength: "Your name must be longer than 2 characters"
-					},
-					email: {
-						required: "We need your email address to contact you",
-						email: "Please enter a valid email address e.g. name@domain.com"
-					},
-					subject: {
-						required: "Please enter a subject"
-					},
-					message: {
-						required: "Please enter a message",
-						minlength: "Your message must be longer than 10 characters"
-					}
-				},
-				errorElement: "span",
-				highlight: function (element) {
-					$(element).parent().removeClass("has-success").addClass("has-error");
-					$(element).siblings("label").addClass("hide");
-				},
-				success: function (element) {
-					$(element).parent().removeClass("has-error").addClass("has-success");
-					$(element).siblings("label").removeClass("hide");
-				}
-			});
-		};
-
-		if($("#footer-form").length>0) {
-			$("#footer-form").validate({
-				submitHandler: function(form) {
-					$('.submit-button').button("loading");
-					$.ajax({
-						type: "POST",
-						url: "php/email-sender.php",
-						data: {
-							"name": $("#footer-form #name2").val(),
-							"email": $("#footer-form #email2").val(),
-							"subject": "Message from contact form",
-							"message": $("#footer-form #message2").val()
-						},
-						dataType: "json",
-						success: function (data) {
-							if (data.sent == "yes") {
-								$("#MessageSent2").removeClass("hidden-xs-up");
-								$("#MessageNotSent2").addClass("hidden-xs-up");
-								$(".submit-button").removeClass("btn-default").addClass("btn-success").prop('value', 'Message Sent');
-								$("#footer-form .form-control").each(function() {
-									$(this).prop('value', '').parent().removeClass("has-success").removeClass("has-error");
-								});
-							} else {
-								$("#MessageNotSent2").removeClass("hidden-xs-up");
-								$("#MessageSent2").addClass("hidden-xs-up");
-							}
-						}
-					});
-				},
-				errorPlacement: function(error, element) {
-					error.insertAfter( element );
-				},
-				onkeyup: false,
-				onclick: false,
-				rules: {
-					name2: {
-						required: true,
-						minlength: 2
-					},
-					email2: {
-						required: true,
-						email: true
-					},
-					message2: {
-						required: true,
-						minlength: 10
-					}
-				},
-				messages: {
-					name2: {
-						required: "Please specify your name",
-						minlength: "Your name must be longer than 2 characters"
-					},
-					email2: {
-						required: "We need your email address to contact you",
-						email: "Please enter a valid email address e.g. name@domain.com"
-					},
-					message2: {
-						required: "Please enter a message",
-						minlength: "Your message must be longer than 10 characters"
-					}
-				},
-				errorElement: "span",
-				highlight: function (element) {
-					$(element).parent().removeClass("has-success").addClass("has-error");
-					$(element).siblings("label").addClass("hide");
-				},
-				success: function (element) {
-					$(element).parent().removeClass("has-error").addClass("has-success");
-					$(element).siblings("label").removeClass("hide");
-				}
-			});
-		};
-
-		if($("#sidebar-form").length>0) {
-
-			$("#sidebar-form").validate({
-				submitHandler: function(form) {
-					$('.submit-button').button("loading");
-					$.ajax({
-						type: "POST",
-						url: "php/email-sender.php",
-						data: {
-							"name": $("#sidebar-form #name3").val(),
-							"email": $("#sidebar-form #email3").val(),
-							"subject": "Message from FAQ page",
-							"category": $("#sidebar-form #category").val(),
-							"message": $("#sidebar-form #message3").val()
-						},
-						dataType: "json",
-						success: function (data) {
-							if (data.sent == "yes") {
-								$("#MessageSent3").removeClass("hidden-xs-up");
-								$("#MessageNotSent3").addClass("hidden-xs-up");
-								$(".submit-button").removeClass("btn-default").addClass("btn-success").prop('value', 'Message Sent');
-								$("#sidebar-form .form-control").each(function() {
-									$(this).prop('value', '').parent().removeClass("has-success").removeClass("has-error");
-								});
-							} else {
-								$("#MessageNotSent3").removeClass("hidden-xs-up");
-								$("#MessageSent3").addClass("hidden-xs-up");
-							}
-						}
-					});
-				},
-				errorPlacement: function(error, element) {
-					error.insertAfter( element );
-				},
-				onkeyup: false,
-				onclick: false,
-				rules: {
-					name3: {
-						required: true,
-						minlength: 2
-					},
-					email3: {
-						required: true,
-						email: true
-					},
-					message3: {
-						required: true,
-						minlength: 10
-					}
-				},
-				messages: {
-					name3: {
-						required: "Please specify your name",
-						minlength: "Your name must be longer than 2 characters"
-					},
-					email3: {
-						required: "We need your email address to contact you",
-						email: "Please enter a valid email address e.g. name@domain.com"
-					},
-					message3: {
-						required: "Please enter a message",
-						minlength: "Your message must be longer than 10 characters"
-					}
-				},
-				errorElement: "span",
-				highlight: function (element) {
-					$(element).parent().removeClass("has-success").addClass("has-error");
-				},
-				success: function (element) {
-					$(element).parent().removeClass("has-error").addClass("has-success");
-				}
-			});
-
-		};
-
-		if($("#rsvp").length>0) {
-			$("#rsvp").validate({
-				submitHandler: function(form) {
-					$('.submit-button').button("loading");
-					$.ajax({
-						type: "POST",
-						url: "php/email-sender.php",
-						data: {
-							"name": $("#rsvp #name").val(),
-							"email": $("#rsvp #email").val(),
-							"guests": $("#rsvp #guests").val(),
-							"subject": "RSVP",
-							"events": $("#rsvp #events").val()
-						},
-						dataType: "json",
-						success: function (data) {
-							if (data.sent == "yes") {
-								$("#MessageSent").removeClass("hidden-xs-up");
-								$("#MessageNotSent").addClass("hidden-xs-up");
-								$(".submit-button").removeClass("btn-default").addClass("btn-success").prop('value', 'Message Sent');
-								$("#rsvp .form-control").each(function() {
-									$(this).prop('value', '').parent().removeClass("has-success").removeClass("has-error");
-								});
-							} else {
-								$("#MessageNotSent").removeClass("hidden-xs-up");
-								$("#MessageSent").addClass("hidden-xs-up");
-							}
-						}
-					});
-				},
-				errorPlacement: function(error, element) {
-					error.insertAfter( element );
-				},
-				onkeyup: false,
-				onclick: false,
-				rules: {
-					name: {
-						required: true,
-						minlength: 2
-					},
-					email: {
-						required: true,
-						email: true
-					},
-					guests: {
-						required: true
-					},
-					events: {
-						required: true
-					}
-				},
-				messages: {
-					name: {
-						required: "Please specify your name",
-						minlength: "Your name must be longer than 2 characters"
-					},
-					email: {
-						required: "We need your email address to contact you",
-						email: "Please enter a valid email address e.g. name@domain.com"
-					}
-				},
-				errorElement: "span",
-				highlight: function (element) {
-					$(element).parent().removeClass("has-success").addClass("has-error");
-					$(element).siblings("label").addClass("hide");
-				},
-				success: function (element) {
-					$(element).parent().removeClass("has-error").addClass("has-success");
-					$(element).siblings("label").removeClass("hide");
-				}
-			});
-		};
-
 		//Scroll Spy
 		//-----------------------------------------------
 		if($(".scrollspy").length>0) {
@@ -1656,31 +1288,21 @@
 		//Smooth Scroll
 		//-----------------------------------------------
 		if ($(".smooth-scroll").length>0) {
-			if(($(".header.fixed").length>0) && (Modernizr.mq('only all and (min-width: 768px)'))) {
-				$('.smooth-scroll a, a.smooth-scroll').click(function() {
-					if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-						var target = $(this.hash);
-						target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-						if (target.length) {
-							$('html,body').animate({
-								scrollTop: target.offset().top-63
-							}, 1000);
-							return false;
-						}
-					}
+			if($(".header.fixed").length>0) {
+				$( ".smooth-scroll a, a.smooth-scroll" ).on( "click", function(e) {
+					var destination = $(this.hash);
+					e.preventDefault();
+					$('html,body').animate({
+						scrollTop: destination.offset().top-66
+					}, 1000);
 				});
 			} else {
-				$('.smooth-scroll a, a.smooth-scroll').click(function() {
-					if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-						var target = $(this.hash);
-						target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-						if (target.length) {
-							$('html,body').animate({
-								scrollTop: target.offset().top
-							}, 1000);
-							return false;
-						}
-					}
+				$( ".smooth-scroll a, a.smooth-scroll" ).on( "click", function(e) {
+					var destination = $(this.hash);
+					e.preventDefault();
+					$('html,body').animate({
+						scrollTop: destination.offset().top
+					}, 1000);
 				});
 			}
 		}
@@ -1695,39 +1317,13 @@
 			});
 		};
 
-		if ($("#offcanvas").length>0) {
-			$('#offcanvas [data-toggle=dropdown]').on('click', function(event) {
-			// Avoid following the href location when clicking
-			event.preventDefault();
-			// Avoid having the menu to close when clicking
-			event.stopPropagation();
-			// close all the siblings
-			$(this).parent().siblings().removeClass('open');
-			// close all the submenus of siblings
-			$(this).parent().siblings().find('[data-toggle=dropdown]').parent().removeClass('open');
-			// opening the one you clicked on
-			$(this).parent().toggleClass('open');
-			});
-		};
-
-		// Parallax section
-		//-----------------------------------------------
-		if (($(".parallax").length>0)){
-			$(".parallax").parallax("50%", 0.2);
-		};
-		if (($(".parallax-2").length>0)){
-			$(".parallax-2").parallax("50%", 0.3);
-		};
-		if (($(".parallax-3").length>0)){
-			$(".parallax-3").parallax("50%", 0.4);
-		};
-
 		// Notify Plugin
 		//-----------------------------------------------
 		if ($(".btn-alert").length>0){
 			$(".btn-alert").on('click', function(event) {
 				$.notify({
 					// options
+					// before putting here dynamic content (e.g content from a user input) please read https://github.com/mouse0270/bootstrap-notify/issues/53
 					message: 'Great! you have just created this message :-) you can configure this into the template.js file'
 				},{
 					// settings
@@ -1764,8 +1360,10 @@
 		// Full Width Image Overlay
 		//-----------------------------------------------
 		if ($(".full-image-overlay").length>0) {
-			overlayHeight = $(".full-image-overlay").outerHeight();
-			$(".full-image-overlay").css("marginTop",-overlayHeight/2);
+			(function(){
+				var overlayHeight = $(".full-image-overlay").outerHeight();
+				$(".full-image-overlay").css("marginTop",-overlayHeight/2);
+			})();
 		};
 
 		//This will prevent the event from bubbling up and close the dropdown when you type/click on text boxes (Header Top).
@@ -1774,9 +1372,9 @@
 			e.stopPropagation();
 		});
 
-	}); // End document ready
+	});
 
-})(this.jQuery);
+})(jQuery);
 
 if (jQuery(".btn-print").length>0) {
 	function print_window() {
