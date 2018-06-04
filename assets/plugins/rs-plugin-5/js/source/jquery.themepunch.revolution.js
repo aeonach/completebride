@@ -1,6 +1,6 @@
 /**************************************************************************
  * jquery.themepunch.revolution.js - jQuery Plugin for Revolution Slider
- * @version: 5.4.6 (23.08.2017)
+ * @version: 5.4.7 (31.01.2018)
  * @requires jQuery v1.7 or later (tested on 1.9)
  * @author ThemePunch
 **************************************************************************/
@@ -8,16 +8,16 @@
 "use strict";
 		
 	var version = {
-					core : "5.4.6",
+					core : "5.4.7",
 					"revolution.extensions.actions.min.js":"2.1.0",
 					"revolution.extensions.carousel.min.js":"1.2.1",
 					"revolution.extensions.kenburn.min.js":"1.3.1",
-					"revolution.extensions.layeranimation.min.js":"3.6.1", 
+					"revolution.extensions.layeranimation.min.js":"3.6.4", 
 					"revolution.extensions.navigation.min.js":"1.3.3", 
 					"revolution.extensions.parallax.min.js":"2.2.0",  
 					"revolution.extensions.slideanims.min.js":"1.7", 
-					"revolution.extensions.video.min.js":"2.1.1"  
-				   }
+					"revolution.extensions.video.min.js":"2.2.0"  
+				   };
 
 	jQuery.fn.extend({
 
@@ -509,6 +509,11 @@
 				var c=jQuery(this);								
 				if (c!=undefined && c.length>0 && jQuery('body').find('#'+c.attr('id')).length>0 && c[0].opt!==undefined) {						
 					if (!c[0].opt.sliderisrunning) {
+						
+						// fixes revapi.revstart();
+						c[0].opt.c=c;
+						c[0].opt.ul = c.find('>ul');
+						
 						runSlider(c,c[0].opt);
 						return true;
 					}
@@ -745,6 +750,15 @@ jQuery.extend(true, _R, {
 	    M=M? [M[1], M[2]]: [N, navigator.appVersion, '-?'];
 	    return M[1];
     },
+	
+	/*
+		Jason / Safari 11 Video autoplay fix
+	*/
+	isSafari11: function() {
+
+		return jQuery.trim(_R.get_browser().toLowerCase()) === 'safari' && parseFloat(_R.get_browser_version()) >= 11;
+		
+	},
 
     // GET THE HORIZONTAL OFFSET OF SLIDER BASED ON THE THU`MBNAIL AND TABS LEFT AND RIGHT SIDE
 	getHorizontalOffset : function(container,side) {
@@ -1029,6 +1043,7 @@ var lAjax = function(s,o) {
 		o.modulesfailing = true;
 		return false;
 	}	
+	
 	jQuery.ajax({
 		url:o.jsFileLocation+s+o.extensions_suffix+'?version='+version.core,
 		'dataType':'script',
@@ -1642,10 +1657,11 @@ var initSlider = function (container,opt) {
 
 				if (_ndata.wrapper_class!==undefined) preclas = preclas+" "+_ndata.wrapper_class;
 				if (_ndata.wrapper_id!==undefined) preid ='id="'+_ndata.wrapper_id+'"';
-
-
-				_nc.wrap('<div '+preid+' class="tp-parallax-wrap '+preclas+'" style="'+specec+' '+ec+'position:'+_pos+';'+dmode+';visibility:hidden"><div class="tp-loop-wrap" style="'+ec+'position:'+_pos+';'+dmode+';"><div class="tp-mask-wrap" style="'+ec+'position:'+_pos+';'+dmode+';" ></div></div></div>');
 				
+				// POINTER EVENTS ADDITION
+				var pevents = '';
+				if(_nc.hasClass('tp-no-events')) pevents = ';pointer-events:none';
+				_nc.wrap('<div '+preid+' class="tp-parallax-wrap '+preclas+'" style="'+specec+' '+ec+'position:'+_pos+';'+dmode+';visibility:hidden'+pevents+'"><div class="tp-loop-wrap" style="'+ec+'position:'+_pos+';'+dmode+';"><div class="tp-mask-wrap" style="'+ec+'position:'+_pos+';'+dmode+';" ></div></div></div>');
 				
 				// ONLY ADD LAYERS TO FADEOUT DYNAMIC LIST WHC
 				if (addtofadeout && opt.scrolleffect.on) 
@@ -1688,7 +1704,7 @@ var initSlider = function (container,opt) {
 				addedApis = _R.checkVideoApis(_nc,opt,addedApis);
 
 			// REMOVE VIDEO AUTOPLAYS FOR MOBILE DEVICES 
-			
+			/*
 			if (_ISM && (!opt.fallbacks.allowHTML5AutoPlayOnAndroid || !htmlvideo)) {
 				if (an == true || an=="true") {
 						_.autoplayonlyfirsttime=false;
@@ -1699,6 +1715,7 @@ var initSlider = function (container,opt) {
 					 ap="off";
 				}
 			} 
+			*/
 
 			//loop =  loop=="none" && _nc.hasClass('rs-background-video-layer') ?  "loopandnoslidestop" : loop;
 
@@ -2509,11 +2526,11 @@ var waitForCurrentImages = function(nextli,opt,callback) {
 			}
 		}
 
-		if (opt.vimeoapineeded == true && !window['Froogaloop']) {
+		if (opt.vimeoapineeded == true && !window['Vimeo']) {
 			waitforload = true;
 			if (jQuery.now()-opt.vimeostarttime>5000 && opt.vimeowarning!=true) {
 				opt.vimeowarning= true;
-				var txt = "Vimeo Froogaloop Api Could not be loaded !";
+				var txt = "Vimeo Api Could not be loaded !";
 				if (location.protocol === 'https:') txt = txt + " Please Check and Renew SSL Certificate !";
 				console.error(txt); 
 				opt.c.append('<div style="position:absolute;top:50%;width:100%;color:#e74c3c;  font-size:16px; text-align:center; padding:15px;background:#000; display:block;"><strong>'+txt+'</strong></div>')				 
@@ -2938,7 +2955,10 @@ var letItFree = function(container,nextsh,actsh,nextli,actli,mtl) {
 	nextli.find('.rs-background-video-layer').each(function(i) {		
 		if (_ISM && (!opt.fallbacks.allowHTML5AutoPlayOnAndroid)) return false;
 		var _nc = jQuery(this);
-		_R.resetVideo(_nc,opt);										
+		
+		// JASON 4th arg for Vimeo
+		_R.resetVideo(_nc,opt,false,true);	
+		
 		punchgs.TweenLite.fromTo(_nc,1,{autoAlpha:0},{autoAlpha:1,ease:punchgs.Power3.easeInOut,delay:0.2,onComplete:function() {		
 			if (_R.animcompleted) _R.animcompleted(_nc,opt);
 		}});

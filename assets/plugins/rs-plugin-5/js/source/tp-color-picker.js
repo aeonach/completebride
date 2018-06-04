@@ -1,6 +1,6 @@
 /**************************************************************************
  * tp-color-picker.js - Color Picker Plugin for Revolution Slider
- * @version: 1.0.1 (2.28.2017)
+ * @version: 1.0.4 (7.9.2017)
  * @author ThemePunch
 **************************************************************************/
 
@@ -128,12 +128,17 @@
 		}
 		else if(clr.search('rgba') !== -1) {
 			
-			return [clr.replace(/\s/g, ''), 'rgba'];
+			return [clr.replace(/\s/g, '').replace(/false/g, '1'), 'rgba'];
+			
+		}
+		else if(clr.search('rgb') !== -1) {
+			
+			return [clr.replace(/\s/g, ''), 'rgb'];
 			
 		}
 		else {
 			
-			return [clr.replace(/\s/g, ''), 'rgb'];
+			return RevColor.isColor.test(clr) ? [clr, 'hex'] : ['transparent', 'transparent', true];
 			
 		}
 		
@@ -2823,8 +2828,15 @@
 		
 	};
 	
-	$.fn.tpColorPicker = function(settings) {
+	function isFalsey(val) {
 		
+		if(/(?=.*false)(?=.*rgba)/.test(val)) return val.replace('false', '1');
+		return false;
+		
+	}
+	
+	$.fn.tpColorPicker = function(settings) {
+
 		if(settings && typeof settings === 'string') return this.each(ColorPicker[settings]);
 		
 		return this.each(function() {
@@ -2845,9 +2857,17 @@
 				ids = $this.attr('data-wrap-id'),
 				txt = $this.attr('data-title'),
 				skin = $this.attr('data-skin'),
-				val = $this.val(),
+				val = $this.val() || '',
+				falsey = isFalsey(val),
 				colorValue,
 				defValue;
+			
+			if(falsey) {
+
+				val = falsey;
+				$this.val(falsey);
+				
+			}
 			
 			wrap.insertBefore($this).append([box, btn, $this]);
 			
@@ -2880,7 +2900,9 @@
 			colorValue = RevColor.process(val);
 			val = colorValue[0];
 			
+			if(colorValue.length === 3) $this.val(val);
 			colorValue = colorValue[1] !== 'rgba' || !RevColor.transparentRgba(val, true) ? val : '';
+			
 			if(colorValue !== 'transparent') box[0].style.background = colorValue;
 			
 			btn[0].innerHTML = txt || langColor || lang.color;

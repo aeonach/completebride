@@ -4,18 +4,18 @@ layout: default
 
 	
         {% include 02fbscript.html %}
-
-      <div id="page-start"></div> <!-- reference -->
+   
 
      
         <div class="scrollToTop circle"><i class="icon-up-open-big"></i></div>	
-
+ <div class="page-wrapper">
+      
   {% include 04header.html %}
-   <main class="page-wrapper">
 
-    <article>
+
+ 
     {% include 05revolution.html %}
-    
+    <div id="page-start"></div> <!-- reference -->
     {% include 06team.html %}
     
     {% include 07firstbreak.html %}
@@ -31,11 +31,13 @@ layout: default
         
       
          
-         </article>
+     {% include 12fbfooter.html %}  
       
 
-    {% include 12fbfooter.html %}
+    
    
 
-  </main>
+  </div>
           
+        
+            {% include 14js.html %}
